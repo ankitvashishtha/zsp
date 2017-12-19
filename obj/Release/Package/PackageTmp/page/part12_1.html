@@ -1,0 +1,103 @@
+﻿<div ng-controller="part12Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 12 :- न्यायिक तथा प्रशासनिक     </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 12.1</div>
+                <div class="md-toolbar-tools" style="font-size:medium">अपराधिक घटनायें  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('1')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                           
+                                            <tr>
+                                                <td >    तहसील का नाम      </td>
+                                                <td>  हत्या    </td>
+                                                <td>  हत्या का प्रयास   </td>
+                                                <td>  डकैती  </td>
+                                                <td> डकैती की तैयारी    </td>
+                                                <td> लूटपाट    </td>
+                                                <td> अपहरण   </td>
+                                                <td> गृह भेदन  </td>
+                                                <td> चोरी(सामान्य)   </td>
+                                                <td>  चोरी(पशुधन)   </td>
+                                                <td>  दंगे   </td>
+                                                <td>  बलात्कार </td>
+                                                <td> विविध   </td>
+                                                <td> अन्य   </td>
+                                                <td> कुल अपराध  </td>
+                                               
+                                            </tr>
+                                            
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vMurder"><input ng-model="table.Murder"  type="text" maxlength="9" onkeypress="return onlyFloat(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vAttemptedMurder"><input ng-model="table.AttemptedMurder" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vRobbery"><input ng-model="table.Robbery" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vPreparationRobbery"><input ng-model="table.PreparationRobbery" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vLooting"><input ng-model="table.Looting" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vAbduction"><input ng-model="table.Abduction" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vHomePiercing"><input ng-model="table.HomePiercing" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vTheft"><input ng-model="table.Theft" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vCattleTheft"><input ng-model="table.CattleTheft" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vRiots"><input ng-model="table.Riots" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vRape"><input ng-model="table.Rape" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vMiscellaneous"><input ng-model="table.Miscellaneous" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vOthers"><input ng-model="table.Others" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vTotalCrime"><input ng-model="table.TotalCrime" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

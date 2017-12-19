@@ -1,0 +1,180 @@
+﻿<div ng-controller="part3Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 3 :- कृषि एवं सम्बद्ध सेवायें  </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 3.3</div>
+                <div class="md-toolbar-tools" style="font-size:medium">प्रमुख फसलों के अंतर्गत क्षेत्रफल</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : हेक्टर </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+                <div class="md-toolbar-tools" style="font-size:medium">Table Id : {{tableId}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('3')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td rowspan="2" >    तहसील का नाम     </td>
+                                                <td rowspan="2"> धान    </td>
+                                                <td rowspan="2"> गेहू  </td>
+                                                <td rowspan="2">  ज्वार    </td>
+                                                <td rowspan="2"> मक्का    </td>
+                                                <td rowspan="2"> कोदो कुटकी </td>
+                                                <td rowspan="2"> अन्य  </td>
+                                                <td rowspan="2"> योग अनाज  </td>
+                                                <td colspan="6">  दाले  </td>
+                                            </tr>
+                                            <tr>
+                                                <td> चना   </td>
+                                                <td> तुअर   </td>
+                                                <td> उड़द  </td>
+                                                <td> लाख तिवड़ा   </td>
+                                                <td> अन्य   </td>
+                                                <td> योग दाले  </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vpaddy"><input type="text"  maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.paddy" />  </td>
+                                                <td class="form-group" ng-class="vwheat"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" ng-pattern="/^\d+$/" class="form-control" required  ng-model="table.wheat" />  </td>
+                                                <td class="form-group" ng-class="vtide"><input type="text" maxlength="4" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.tide"/>  </td>
+                                                <td class="form-group" ng-class="vmaize"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.maize"/>  </td>
+                                                <td class="form-group" ng-class="vkodoAndKutki"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.kodoAndKutki" />  </td>
+                                                <td class="form-group" ng-class="votherGrain"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.otherGrain"/>  </td>
+                                                <td class="form-group" ng-class="vtotalGrain"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalGrain"/>  </td>
+                                                <td class="form-group" ng-class="vgram"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.gram"/>  </td>
+                                                <td class="form-group" ng-class="vtur"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.tur"/>  </td>
+                                                <td class="form-group" ng-class="vurad"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.urad" />  </td>
+                                                <td class="form-group" ng-class="vlakhTiwada"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.lakhTiwada" />  </td>
+                                                <td class="form-group" ng-class="votherPulse"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.otherPulse" />  </td>
+                                                <td class="form-group" ng-class="vtotalPulse"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalPulse" />  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+                <table class="table table-responsive  table-bordered text-center">
+                    <thead style="background-color:#85929E; color:white;">
+                        <tr>
+                            <td rowspan="2">    तहसील का नाम     </td>
+                            <td rowspan="2"> गन्ना    </td>
+                            <td rowspan="2"> योग फल  </td>
+                            <td rowspan="2">  योग साग सब्जी   </td>
+                            <td rowspan="2"> योग मिर्च मसाले   </td>
+                            <td rowspan="2"> अन्य खाद्य फसले </td>
+                            <td rowspan="2"> योग खाद्यान्न </td>
+                            <td colspan="7">  तिलहन </td>
+                        </tr>
+                        <tr>
+                            <td> सोयाबीन   </td>
+                            <td> तिल   </td>
+                            <td> मूँगफली  </td>
+                            <td> रामतिल  </td>
+                            <td> राई एवं सरसों   </td>
+                            <td> अन्य  </td>
+                            <td> योग तिलहन </td>
+                        </tr>
+                    </thead>
+                    <tbody class="foot">
+                        <tr ng-repeat="table in formTable">
+                            <td>{{table.areaName}}</td>
+                            <td class="form-group" ng-class="vsugarcane"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.sugarcane"  />  </td>
+                            <td class="form-group" ng-class="vtotalFruit"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" ng-pattern="/^\d+$/" class="form-control" required  ng-model="table.totalFruit" />  </td>
+                            <td class="form-group" ng-class="vtotalVegetable"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalVegetable" />  </td>
+                            <td class="form-group" ng-class="vtotalSpices"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalSpices" />  </td>
+                            <td class="form-group" ng-class="vtherFoodGrain"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.therFoodGrain" />  </td>
+                            <td class="form-group" ng-class="vtotalFoodGrain"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalFoodGrain" />  </td>
+                            <td class="form-group" ng-class="vsoyabean"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.soyabean" />  </td>
+                            <td class="form-group" ng-class="vsesame"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.sesame" />  </td>
+                            <td class="form-group" ng-class="vgroundnut"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.groundnut" />  </td>
+                            <td class="form-group" ng-class="vramtil"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.ramtil" />  </td>
+                            <td class="form-group" ng-class="vmustard"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.mustard" />  </td>
+                            <td class="form-group" ng-class="votherOilSeeds"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.otherOilSeeds" />  </td>
+                            <td class="form-group" ng-class="vtotalOilSeads"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalOilSeads" />  </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <table class="table table-responsive  table-bordered text-center">
+                    <thead style="background-color:#85929E; color:white;">
+                        <tr>
+                            <td rowspan="2">    तहसील का नाम     </td>
+                            <td colspan="3"> रेशे  </td>
+                            <td colspan="3"> औषधि एवं मादक पदार्थ  </td>
+                            <td rowspan="2">  अन्य अखाद्य फसलें    </td>
+                            <td rowspan="2"> योग अखाद्य फसलें    </td>
+                            <td rowspan="2"> समस्त फसलों के अंतर्गत सकल क्षेत्रफल  </td>
+                            
+                        </tr>
+                        <tr>
+                            <td> कपास   </td>
+                            <td> अन्य  </td>
+                            <td> योग  </td>
+                            <td> तम्बाकू  </td>
+                            <td> अन्य   </td>
+                            <td> योग  </td>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="foot">
+                        <tr ng-repeat="table in formTable">
+                            <td>{{table.areaName}}</td>
+                            <td class="form-group" ng-class="vcotton"><input type="text"  maxlength="3"  onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.cotton"/>  </td>
+                            <td class="form-group" ng-class="votherFiber"><input type="text" maxlength="3" onkeypress="return onlyNum(this)" ng-pattern="/^\d+$/" class="form-control" required  ng-model="table.otherFiber" />  </td>
+                            <td class="form-group" ng-class="vtotalFiber"><input type="text" maxlength="3" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalFiber" />  </td>
+                            <td class="form-group" ng-class="vtobacco"><input type="text" maxlength="3" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.tobacco" />  </td>
+                            <td class="form-group" ng-class="votherMedicinal"><input type="text" maxlength="3" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.otherMedicinal" />  </td>
+                            <td class="form-group" ng-class="vtotalMedicinal"><input type="text" maxlength="3" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalMedicinal" />  </td>
+                            <td class="form-group" ng-class="votherInedibleCrop"><input type="text" maxlength="3" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.otherInedibleCrop" />  </td>
+                            <td class="form-group" ng-class="vtotalCrop"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalCrop" />  </td>
+                            <td class="form-group" ng-class="vareaTotalCrop"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.areaTotalCrop" />  </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+               
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

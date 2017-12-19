@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en"  ng-app="zspApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Chhattisgarh DES</title>
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font/css/font-awesome.min.css" rel="stylesheet" />
+    <!--<link href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css" rel="stylesheet">-->
+    <!-- Custom CSS -->
+    <link href="css/cgzsp.css" rel="stylesheet">
+    <link href="css/nprogress.css" rel="stylesheet" />
+    <link href="css/jquery-impromptu.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <link href="js/gmBackToTop-min.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <!--<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+    <link rel="icon" href="img/favicon.ico" type="images/x-icon" />
+    
+
+</head>
+
+<body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-custom navbar-fixed-top hidden-print" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">जिला सांख्यिकी समग्र, छत्तीसगढ़</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="liEntry">
+                            <a ui-sref="entry">Entry</a>
+                        </li>
+                        <li>
+                            <a href="http://jarvis/zss/#/dashboard">Dashboard</a>
+                        </li>
+                        <li>
+                            <a ui-sref="tables">Tables</a>
+                        </li>
+                        <li>
+                            <a ui-sref="download">Download</a>
+                        </li>
+                        <!--<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="portfolio-1-col.html">1 Column Portfolio</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-2-col.html">2 Column Portfolio</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-3-col.html">3 Column Portfolio</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-4-col.html">4 Column Portfolio</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-item.html">Single Portfolio Item</a>
+                                </li>
+                            </ul>
+                        </li>-->
+                      
+
+
+                        <li ng-cloak ng-controller="loginController">
+                            <a id="login" class="btn" ui-sref="login">Login</a><a id="logout" class="btn" ng-click="logout()">Logout</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <div ui-view></div>
+   
+    <!-- jQuery -->
+
+   
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>-->
+    <script src="js/jquery.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+  
+    <script src="js/angular-ui-router.min.js"></script>
+    
+   
+    <script src="js/ngParallax.min.js"></script>
+    <script src="js/core.zsp.js"></script>
+    <script src="js/controller.zsp.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/nprogress.js"></script>
+    <script src="js/SmoothScroll.js"></script>
+    <script src="js/jquery-impromptu.min.js"></script>
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+
+    function collapseNavbar() {
+        if ($(".navbar").offset().top > 50) {
+            $(".navbar-fixed-top").addClass("top-nav-collapse");
+        } else {
+            $(".navbar-fixed-top").removeClass("top-nav-collapse");
+        }
+    }
+
+    $(window).scroll(collapseNavbar);
+    $(document).ready(collapseNavbar);
+
+    // jQuery for page scrolling feature - requires jQuery Easing plugin
+    $(function () {
+        $('a.page-scroll').bind('click', function (event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+
+    // Closes the Responsive Menu on Menu Item Click
+    $('.navbar-collapse ul li a').click(function () {
+        $(".navbar-collapse").collapse('hide');
+    });
+
+    
+    </script>
+   </body>
+
+</html>

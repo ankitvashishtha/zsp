@@ -1,0 +1,99 @@
+﻿<div ng-controller="part3Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 3 :- कृषि एवं सम्बद्ध सेवायें  </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 3.12</div>
+                <div class="md-toolbar-tools" style="font-size:medium">पशुधन एवं कुक्कुट, मांस (उक्पादन एवं मूल्य)</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  :  लाख रू. </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('12')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम     </td>
+                                                <td colspan="2"> गौवंशीय    </td>
+                                                <td colspan="2"> भैसवंशीय  </td>
+                                                <td colspan="2"> बकरा/बकरी   </td>
+                                                <td colspan="2"> भेड़/भेड़ी  </td>
+                                                <td colspan="2"> सूकर   </td>
+                                            </tr>
+                                            <tr>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य   </td>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य   </td>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य   </td>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य   </td>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य   </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vcow_Production"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  required  ng-disabled="true" ng-model="table.cow_Production" />  </td>
+                                                <td class="form-group" ng-class="vcow_Price"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-disabled="true" ng-model="table.cow_Price" />  </td>
+                                                <td class="form-group" ng-class="vbuffalo_Production"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-disabled="true" ng-model="table.buffalo_Production"/>  </td>
+                                                <td class="form-group" ng-class="vbuffalo_Price"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-disabled="true" ng-model="table.buffalo_Price"/>  </td>
+                                                <td class="form-group" ng-class="vgoat_Production"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.goat_Production" />  </td>
+                                                <td class="form-group" ng-class="vgoat_Price"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.goat_Price"/>  </td>
+                                                <td class="form-group" ng-class="vsheep_Production"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.sheep_Production"/>  </td>
+                                                <td class="form-group" ng-class="vsheep_Price"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.sheep_Price" />  </td>
+                                                <td class="form-group" ng-class="vhog_Production"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.hog_Production" />  </td>
+                                                <td class="form-group" ng-class="vhog_Price"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.hog_Price" />  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+               
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

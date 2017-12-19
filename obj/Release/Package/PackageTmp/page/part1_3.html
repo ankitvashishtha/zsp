@@ -1,0 +1,102 @@
+﻿<div ng-controller="part1Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 1 :- भौगोलिक एवं प्रशासनिक संरचना </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+
+        <div layout="row" layout-align="space-between center">
+            <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 1.3</div>
+            <div class="md-toolbar-tools" style="font-size:medium">औसत वर्षा</div>
+            <div class="md-toolbar-tools" style="font-size:medium">इकाई  : मिलीमीटर</div>
+            <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+        </div>
+
+    </md-toolbar>
+    <form class="container-fluid" novalidate name="f1" ng-submit="save('3')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td >    तहसील का नाम     </td>
+                                                <td > जनवरी   </td>
+                                                <td >फ़रवरी </td>
+                                                <td>  मार्च  </td>
+                                                <td> अप्रैल </td>
+                                                <td> मई   </td>
+                                                <td> जून</td>
+                                                <td>  जुलाई   </td>
+                                                <td>  अगस्त</td>
+                                                <td>  सितंबर   </td>
+                                                <td> अक्टूबर</td>
+                                                <td> नवंबर   </td>
+                                                <td>  दिसंबर</td>
+                                                <td>  औसत  </td>
+                                               
+                                            </tr>
+                                            
+                                           
+                                        </thead>
+                                        <tbody class="foot">
+
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.jan" required />  </td>
+                                                <td class="form-group" ><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.fab" required />  </td>
+                                                <td class="form-group" ><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.mar" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.apr" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.may" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.jun" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.jul" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.aug" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.sep" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.oct" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.nov" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.dec" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="6" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.avgRain" required />  </td>
+                                               
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             
+
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                       
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+       
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

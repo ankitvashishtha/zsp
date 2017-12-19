@@ -1,0 +1,78 @@
+﻿<div ng-controller="downloadCtrl">
+    <h4 class="text-center">जिला सांख्यिकी समग्र, छत्तीसगढ़</h4>
+    <br /><br /><br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4>Select Indicators</h4>
+                    </div>
+                    <div class="panel-body">
+
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="sector in sectors">
+                                <input type="checkbox" ng-model="selectAll">  <i class=" clickable ng-class:showSubSector ? 'fa fa-arrow-down' : 'fa fa-arrow-right';" ng-click="showSubSector = !showSubSector">  {{sector.sectorNameH}}  ({{sector.sectorDiscription}})</i>
+                                <ul class="list-group" ng-hide="!showSubSector">
+                                    <li class="list-group-item" ng-repeat="subsector in sector.listSubsector">
+                                        <input type="checkbox" ng-model="selectAll">  <i class="ng-class:showIus ? 'fa fa-arrow-down' : 'fa fa-arrow-right'; clickable" ng-click="showIus = !showIus"> {{subsector.subSectorH}}</i>
+                                        <ul class="list-group" ng-hide="!showIus">
+                                            <li class="list-group-item" ng-repeat="ius in subsector.listIus">
+                                                <span class="checkbox checkbox-inline"><input type="checkbox" ng-model="selectAll"> {{ius.indicatorNameH}}</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4>Select Area</h4>
+                    </div>
+                    <div class="panel-body">
+                        <!--<div layout="row" layout-wrap flex>
+                            
+                            <div flex="100" ng-repeat="parentArea in area">
+                                {{parentArea.areaNameH}}                
+                                 <md-checkbox>
+                                    <hr />
+                                    <div flex="100" ng-repeat="chlildArea in parentArea.areaList">
+
+                                        <md-checkbox>
+                                            {{chlildArea.areaNameH}}
+                                        </md-checkbox>
+                                    </div>
+                                </md-checkbox>
+                            </div>
+                        </div>-->
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="parentArea in areaL">
+                                <input type="checkbox" ng-model="selectAll" />  <i class=" clickable ng-class:showParentArea ? 'fa fa-arrow-down' : 'fa fa-arrow-right';" ng-click="showParentArea = !showParentArea">  {{parentArea.areaNameH}}  </i>
+                                <ul class="list-group" ng-hide="!showParentArea">
+                                    <li class="list-group-item" ng-repeat="chlildArea in parentArea.areaList">
+                                        <span class="checkbox checkbox-inline"><input type="checkbox" ng-model="selectAll" ng-change="addArea({{chlildArea.id}})" />{{chlildArea.areaNameH}}</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <button class="btn btn-success"> Download</button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>

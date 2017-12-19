@@ -1,0 +1,98 @@
+﻿<div ng-controller="part3Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    
+
+    <br />
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp"  layout layout-align="center center">
+            <h4>भाग 3 :- कृषि एवं सम्बद्ध सेवायें  </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 3.1</div>
+                <div class="md-toolbar-tools" style="font-size:medium">भूमि उपयोग</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : हेक्टर </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('1')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td rowspan="2" >    तहसील का नाम     </td>
+                                                <td colspan="4"> भूमि उपयोग    </td>
+                                                <td colspan="5"> फसलों का क्षेत्रफल  </td>
+                                            </tr>
+                                            <tr>
+                                                <td> क्षेत्रफल ग्रामीण पत्रक के अनुसार   </td>
+                                                <td> वनक्षेत्र (राजस्व+वन)    </td>
+                                                <td> कृषि के लिए जो भूमि उपलब्ध नहीं   </td>
+                                                <td> अन्य अक्रिश्य भूमि जिनमे पड़ती शामिल नहीं      </td>
+                                                <td> पड़त भूमि   </td>
+                                                <td> पड़ती भूमि    </td>
+                                                <td> निरा क्षेत्रफल </td>
+                                                <td> कुल क्षेत्रफल     </td>
+                                                <td> द्विफसलीय  </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vareAccToGP"><input type="text" maxlength="6"  onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.areAccToGP" required/>  </td>
+                                                <td class="form-group" ng-class="vvanKshetra"><input type="text" maxlength="6" required onkeypress="return onlyNum(this)" class="form-control" ng-model="table.vanKshetra" />  </td>
+                                                <td class="form-group" ng-class="vnotAvFoAgri"><input type="text" maxlength="6" required onkeypress="return onlyNum(this)" class="form-control" ng-model="table.notAvFoAgri"/>  </td>
+                                                <td class="form-group" ng-class="votherLand"><input type="text" maxlength="6" required onkeypress="return onlyNum(this)" class="form-control" ng-model="table.otherLand"/>  </td>
+                                                <td class="form-group" ng-class="vfallowLand"><input type="text" maxlength="6" required onkeypress="return onlyNum(this)" class="form-control" ng-model="table.fallowLand" />  </td>
+                                                <td class="form-group" ng-class="vfallowGround"><input type="text" maxlength="6" required onkeypress="return onlyNum(this)" class="form-control" ng-model="table.fallowGround"/>  </td>
+                                                <td class="form-group" ng-class="vstarkArea"><input type="text" maxlength="6" required onkeypress="return onlyNum(this)" class="form-control" ng-model="table.starkArea"/>  </td>
+                                                <td class="form-group" ng-class="vtotalArea"><input type="text" maxlength="6" required onkeypress="return onlyNum(this)" class="form-control" ng-model="table.totalArea"/>  </td>
+                                                <td class="form-group" ng-class="vdoubleCrop"><input type="text" maxlength="6" required onkeypress="return onlyNum(this)" class="form-control" ng-model="table.doubleCrop"/>  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div ><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+               
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

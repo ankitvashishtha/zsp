@@ -1,0 +1,101 @@
+﻿<div ng-controller="part8Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 8 :- श्रम एवं रोजगार    </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 8.1</div>
+                <div class="md-toolbar-tools" style="font-size:medium">श्रम सांख्यिकी </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('1')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम      </td>
+                                                <td colspan="2"> दुकान स्थापनाये   </td>
+                                                <td colspan="2"> वाणिज्यिक संस्थाये </td>
+                                                <td colspan="2"> आमोद-प्रमोद एवं मनोरंजन </td>
+                                                <td colspan="2"> होटल  </td>
+                                                <td colspan="2"> अन्य </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td> संख्या </td>
+                                                <td> कार्यरत कर्मचारी</td>
+                                                <td> संख्या </td>
+                                                <td> कार्यरत कर्मचारी</td>
+                                                <td> संख्या </td>
+                                                <td> कार्यरत कर्मचारी</td>
+                                                <td> संख्या </td>
+                                                <td> कार्यरत कर्मचारी</td>
+                                                <td> संख्या </td>
+                                                <td> कार्यरत कर्मचारी</td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vShopEstNumber"><input ng-model="table.ShopEstNumber"  type="text" maxlength="9" onkeypress="return onlyFloat(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vShopEstWOrkers"><input ng-model="table.ShopEstWOrkers" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vCommercialOrgNumber"><input ng-model="table.CommercialOrgNumber" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vCommercialOrgWorkers"><input ng-model="table.CommercialOrgWorkers"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vEntertainmentNumber"><input  ng-model="table.EntertainmentNumber"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vEntertainmentWorkers"><input  ng-model="table.EntertainmentWorkers"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vHotelNumber"><input ng-model="table.HotelNumber" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vHotelWorkers"><input ng-model="table.HotelWorkers" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vOtherNumber"><input ng-model="table.OtherNumber" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vOtherWorkers"><input ng-model="table.OtherWorkers" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

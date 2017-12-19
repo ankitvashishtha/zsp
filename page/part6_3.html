@@ -1,0 +1,89 @@
+﻿<div ng-controller="part6Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 6 :- उद्दोग    </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 6.3</div>
+                <div class="md-toolbar-tools" style="font-size:medium">पाचवी आर्थिक गणना 2005</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('3')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम      </td>
+                                                <td colspan="3"> कुल उद्यमों की संख्या   </td>
+                                                <td rowspan="2"> कृषि उद्यम </td>
+                                                <td rowspan="2"> गैर कृषि उद्यम </td>
+                                                <td rowspan="2"> परिसर वाले उद्यम </td>
+                                                <td rowspan="2"> बिना परिसर वाले उद्यम </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td> ग्रामीण </td>
+                                                <td> नगरीय</td>
+                                                <td> योग</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vTotEnterpriseRural"><input ng-model="table.TotEnterpriseRural"  type="text" maxlength="9" onkeypress="return onlyFloat(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vTotEnterpriseUrban"><input ng-model="table.TotEnterpriseUrban" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vTotEnterprise"><input ng-model="table.TotEnterprise" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vAgriEnterprise"><input ng-model="table.AgriEnterprise"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vNonAgriEnterprise"><input  ng-model="table.NonAgriEnterprise"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vCampus"><input  ng-model="table.Campus"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vWithoutCampus"><input ng-model="table.WithoutCampus" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

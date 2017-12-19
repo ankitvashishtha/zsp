@@ -1,0 +1,83 @@
+﻿<div ng-controller="part15Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 15 :- विविध     </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 15.1</div>
+                <div class="md-toolbar-tools" style="font-size:medium">जिले में प्रकाशित होने वाले समाचार पत्र/पत्रिकायें</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <div><md-button ng-click="addRow()" class="md-raised md-primary">Add Row</md-button></div>
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('1')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                           
+                                            <tr>
+                                                <td>   जिले का नाम   </td>
+                                                <td>  समाचार पत्र/पत्रिका का नाम  </td>
+                                                <td> भाषा  </td>
+                                                <td> समयावधि </td>
+                                                <td> नियमित/अनियमित </td>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr ng-repeat="table in formTable">
+                                                <td><span ng-if="!table.id" class="fa fa-remove fa-2x pull-left" ng-click="removeRow(table)" style="color:red;"></span>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vNewsPaperName"><input ng-model="table.NewsPaperName"  type="text"   class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vLanguages"><input ng-model="table.Languages" type="text" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vTimePeriod"><input ng-model="table.TimePeriod" type="text"  class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vRegularity"><input ng-model="table.Regularity" type="text" class="form-control" required />  </td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

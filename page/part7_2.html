@@ -1,0 +1,85 @@
+﻿<div ng-controller="part7Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 7 :- विद्युत   </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 7.2</div>
+                <div class="md-toolbar-tools" style="font-size:medium">विद्युतीकरण</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('2')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td >    तहसील का नाम      </td>
+                                                <td > विद्युतीकृत ग्राम </td>
+                                                <td > कुल आबाद ग्रामो से विद्युतीकृत ग्रामो का प्रतिशत</td>
+                                                <td > विद्युतीकृत पम्पसेट </td>
+                                                <td > प्रति आबाद ग्राम ऊर्जिकृत पम्पसेट </td>
+                                                <td > कुल उपभोग से ग्रामीण क्षेत्र मे विद्युत उपभोग का प्रतिशत</td>
+                                                <td> कुल उपभोग से ग्रामीण क्षेत्र मे विद्युत उपभोक्ता का प्रतिशत </td>
+                                                
+                                            </tr>
+                                           
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr>
+                                                <td>{{formTable[formTable.length-1].areaName}}</td>
+                                                <td class="form-group" ng-class="vElecrilizedVillage"><input ng-model="formTable[formTable.length-1].ElecrilizedVillage"  type="text" maxlength="9" onkeypress="return onlyFloat(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vElecrilizedVillagePercent"><input ng-model="formTable[formTable.length-1].ElecrilizedVillagePercent" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vElecrilizedPumpset"><input ng-model="formTable[formTable.length-1].ElecrilizedPumpset" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vEnergeticPumpset"><input ng-model="formTable[formTable.length-1].EnergeticPumpset"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vElectricityConsumptionPersent"><input  ng-model="formTable[formTable.length-1].ElectricityConsumptionPersent"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vElectricityConsumerPersent"><input  ng-model="formTable[formTable.length-1].ElectricityConsumerPersent"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

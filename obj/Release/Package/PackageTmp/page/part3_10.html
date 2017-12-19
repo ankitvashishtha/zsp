@@ -1,0 +1,131 @@
+﻿<div ng-controller="part3Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 3 :- कृषि एवं सम्बद्ध सेवायें  </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 3.10</div>
+                <div class="md-toolbar-tools" style="font-size:medium">पशुधन एवं कुक्कुट </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  :  संख्या </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('10')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td rowspan="2" >    तहसील का नाम     </td>
+                                                <td colspan="3"> गाय     </td>
+                                                <td rowspan="2"> योग (गाय)   </td>
+
+                                                <td colspan="3"> भैसे </td>
+                                                <td rowspan="2"> योग (भैसे )   </td>
+                                            </tr>
+                                            <tr>
+                                                <td> 3 वर्ष से अधिक उम्र के नर </td>
+                                                <td> 3 वर्ष से अधिक उम्र के मादाए  </td>
+                                                <td> बछड़े/बछिया   </td>
+                                                <td> 3 वर्ष से अधिक उम्र के नर  </td>
+                                                <td> 3 वर्ष से अधिक उम्र के मादाए    </td>
+                                                <td> पड़वा/ पड़िया  </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vmoreThan3CowM"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.moreThan3CowM" required/>  </td>
+                                                <td class="form-group" ng-class="vmoreThan3CowF"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" ng-pattern="/^\d+$/" class="form-control" ng-model="table.moreThan3CowF" required/>  </td>
+                                                <td class="form-group" ng-class="vcowCalf"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.cowCalf" required/>  </td>
+                                                <td class="form-group" ng-class="vtotalCow"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.totalCow" required/>  </td>
+                                                <td class="form-group" ng-class="vmoreThan3BuffaloM"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.moreThan3BuffaloM" required/>  </td>
+                                                <td class="form-group" ng-class="vmoreThan3BuffaloF"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.moreThan3BuffaloF" required/>  </td>
+                                                <td class="form-group" ng-class="vbuffaloCalf"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.buffaloCalf" required/>  </td>
+                                                <td class="form-group" ng-class="vtotalBuffalo"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.totalBuffalo" required/>  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+                <table class="table table-responsive  table-bordered text-center">
+                    <thead style="background-color:#85929E; color:white;">
+                        <tr>
+                            <td rowspan="2">    तहसील का नाम     </td>
+                            <td rowspan="2">    भेड़/भेड़ी    </td>
+                            <td rowspan="2">    बकरे/बकरिया    </td>
+                            <td rowspan="2">    घोड़े/टट्टू     </td>
+                            <td rowspan="2">    गधे     </td>
+                            <td rowspan="2">    ऊँट    </td>
+                            <td rowspan="2">    सूअर    </td>
+                            <td rowspan="2">    अन्य पशुधन    </td>
+                            <td rowspan="2">    योग पशुधन    </td>
+                            <td colspan="3">    कुक्कुट </td>
+                        </tr>
+                        <tr>
+                            <td> मुर्गे/मुर्गियाँ </td>
+                            <td> बत्तख  </td>
+                            <td> योग   </td>
+                        </tr>
+                    </thead>
+                    <tbody class="foot">
+                        <tr ng-repeat="table in formTable">
+                            <td>{{table.areaName}}</td>
+                            <td class="form-group" ng-class="vsheep"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.sheep" required/>  </td>
+                            <td class="form-group" ng-class="vgoat"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" ng-pattern="/^\d+$/" class="form-control" ng-model="table.goat" required/>  </td>
+                            <td class="form-group" ng-class="vhorse"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.horse" required/>  </td>
+                            <td class="form-group" ng-class="vdonkey"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.donkey" required/>  </td>
+                            <td class="form-group" ng-class="vcamel"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.camel" required/>  </td>
+                            <td class="form-group" ng-class="vhog"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.hog" required/>  </td>
+                            <td class="form-group" ng-class="votherCattle"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.otherCattle" required/>  </td>
+                            <td class="form-group" ng-class="vtotalCattle"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.total" required/>  </td>
+                            <td class="form-group" ng-class="vhen"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.hen" required/>  </td>
+                            <td class="form-group" ng-class="vduck"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.duck" required/>  </td>
+                            <td class="form-group" ng-class="vtotalPoultry"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.totalPoultry" required/>  </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+               
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

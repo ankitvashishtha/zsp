@@ -1,0 +1,106 @@
+﻿<div ng-controller="part3Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 3 :- कृषि एवं सम्बद्ध सेवायें  </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 3.5</div>
+                <div class="md-toolbar-tools" style="font-size:medium">प्रमुख फसलों का उत्पादन</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : मेट्रिक टन </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('5')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td>    तहसील का नाम     </td>
+                                                <td> धान  </td>
+                                                <td> गेहू   </td>
+                                                <td> ज्वार  </td>
+                                                <td> मक्का  </td>
+                                                <td> कोदो कुटकी </td>
+                                                <td> चना   </td>
+                                                <td> तुअर </td>
+                                                <td> उड़द   </td>
+                                                <td> लाख तिवड़ा  </td>
+                                                <td> गन्ना </td>
+                                                <td> सोयाबीन  </td>
+                                                <td> तिल  </td>
+                                                <td> मूँगफली </td>
+                                                <td> रामतिल </td>
+                                                <td> राई एवं सरसों  </td>
+                                                <td> कपास </td>
+                                                <td> तम्बाकू   </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vpaddy"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.paddy"  />  </td>
+                                                <td class="form-group" ng-class="vwheat"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" ng-pattern="/^\d+$/" class="form-control" required  ng-model="table.wheat" />  </td>
+                                                <td class="form-group" ng-class="vtide"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.tide"/>  </td>
+                                                <td class="form-group" ng-class="vmaize"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.maize"/>  </td>
+                                                <td class="form-group" ng-class="vkodoAndKutki"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.kodoAndKutki" />  </td>
+                                                <td class="form-group" ng-class="vgram"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.gram"/>  </td>
+                                                <td class="form-group" ng-class="vtur"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.tur"/>  </td>
+                                                <td class="form-group" ng-class="vurad"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.urad"/>  </td>
+                                                <td class="form-group" ng-class="vlakhTiwada"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.lakhTiwada"/>  </td>
+                                                <td class="form-group" ng-class="vsugarcane"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.sugarcane"  />  </td>
+                                                <td class="form-group" ng-class="vsoyabean"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" ng-pattern="/^\d+$/" class="form-control" required  ng-model="table.soyabean" />  </td>
+                                                <td class="form-group" ng-class="vtil"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.til" />  </td>
+                                                <td class="form-group" ng-class="vgroundnut"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.groundnut" />  </td>
+                                                <td class="form-group" ng-class="vramtil"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.ramtil" />  </td>
+                                                <td class="form-group" ng-class="vmustard"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.mustard" />  </td>
+                                                <td class="form-group" ng-class="vcotton"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.cotton" />  </td>
+                                                <td class="form-group" ng-class="vtobacco"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.tobacco" />  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+               
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

@@ -1,0 +1,93 @@
+﻿<div ng-controller="part10Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 10 :- बैंकिंग     </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 10.5</div>
+                <div class="md-toolbar-tools" style="font-size:medium">भूमि विकास बैंक की गतिविधियाँ    </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : लाख रू. में  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('5')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                           
+                                            <tr>
+                                                <td >    तहसील का नाम      </td>
+                                                <td>    शाखाओ  की संख्या     </td>
+                                                <td>   सदस्य संख्या     </td>
+                                                <td>    प्रदत्त अंश पूंजी     </td>
+                                                <td>    स्वंय के कोष     </td>
+                                                <td>    ऋण      </td>
+                                                <td>    कार्यशील पूंजी     </td>
+                                                <td> ऋण वितरण निधि    </td>
+                                                <td> कुल ऋण वितरण    </td>
+                                                <td> कुल बकाया राशी     </td>
+
+</tr>
+                                            
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vBranches"><input ng-model="table.Branches" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vMembers"><input ng-model="table.Members" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vShareCapital"><input ng-model="table.ShareCapital"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vFund"><input ng-model="table.Fund" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vLoan"><input ng-model="table.Loan" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vWorkingCapital"><input ng-model="table.WorkingCapital" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vLendingFund"><input ng-model="table.LendingFund" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vLoanDistribution"><input ng-model="table.LoanDistribution" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vOutstandingAmount"><input ng-model="table.OutstandingAmount" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

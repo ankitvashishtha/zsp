@@ -1,0 +1,99 @@
+﻿<div ng-controller="part9Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 9 :- श्रम एवं रोजगार    </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 9.12</div>
+                <div class="md-toolbar-tools" style="font-size:medium">संक्रामक बीमारियों पर नियंत्रण</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('12')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम      </td>
+                                                <td rowspan="2">ब्लड स्लाइड का परिक्षण  </td>
+                                                <td colspan="6"> कार्यक्रम का नाम </td>
+                                                <td > राष्ट्रिय दृष्टि हीनता    </td>
+                                                <td rowspan="2"> कुष्ठ उन्मूलन रोगियों की संख्या   </td>
+                                                <td rowspan="2"> कैंसर रोगियों की संख्या   </td>
+                                                <td rowspan="2"> एड्स रोगियों की संख्या   </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>मलेरिया से ग्रसित रोगियों की संख्या </td>
+                                                <td>कफ परिक्षण</td>
+                                                <td>धनात्मक रोगी</td>
+                                                <td>स्पष्ट निगेटिव रोगी</td>
+                                                <td>सक्स्त्रा पल्मोनरी की संख्या</td>
+                                                <td>माह के अंत में उपचार रत रोगी की संख्या </td>
+                                                <td>दृष्टिहीन व्यक्तियों की संख्या </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vBloodTest"><input ng-model="table.BloodTest"  type="text" maxlength="9" onkeypress="return onlyNum(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vMalariaPatiant"><input ng-model="table.MalariaPatiant" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vCoughTest"><input ng-model="table.CoughTest" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vPosativePatiant"><input ng-model="table.PosativePatiant"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vNegetivePatiant"><input  ng-model="table.NegetivePatiant"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vPulmonaryPatiant"><input  ng-model="table.PulmonaryPatiant"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vPatiantOnMonth"><input ng-model="table.PatiantOnMonth" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vBlindPerson"><input ng-model="table.BlindPerson" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vLeprosyPatiant"><input ng-model="table.LeprosyPatiant" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vCancerPatiant"><input ng-model="table.CancerPatiant" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vAidsPatiant"><input ng-model="table.AidsPatiant" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

@@ -1,0 +1,120 @@
+﻿<div ng-controller="part3Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 3 :- कृषि एवं सम्बद्ध सेवायें  </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+
+        <div layout="row" layout-align="space-between center">
+            <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 3.7</div>
+            <div class="md-toolbar-tools" style="font-size:medium">सिंचाई के साधन एवं सिंचित क्षेत्र</div>
+            <div class="md-toolbar-tools" style="font-size:medium">इकाई  : हेक्टर </div>
+            <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+        </div>
+
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('7')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-responsive  table-bordered text-center">
+                    <thead style="background-color:#85929E; color:white;">
+                        <tr>
+                            <td rowspan="2">    तहसील का नाम     </td>
+                            <td colspan="2"> नहरे     </td>
+                            <td colspan="2"> नलकूप  </td>
+                            <td colspan="2"> कुए     </td>
+                            <td colspan="2"> तालाब </td>
+                            <td rowspan="2"> अन्य स्त्रोतों से सिंचित क्षेत्र    </td>
+                        </tr>
+                        <tr>
+                            <td> शासकीय / निजी  </td>
+                            <td> सिंचित क्षेत्र     </td>
+                            <td> संख्या   </td>
+                            <td> सिंचित क्षेत्र </td>
+                            <td> संख्या   </td>
+                            <td> सिंचित क्षेत्र </td>
+                            <td> संख्या   </td>
+                            <td> सिंचित क्षेत्र </td>
+                        </tr>
+                    </thead>
+                    <tbody class="foot">
+                        <tr ng-repeat="table in formTable">
+                            <td>{{table.areaName}}</td>
+                            <td class="form-group" ng-class="vcanalNumber"><input type="text" maxlength="4" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.canalNumber" />  </td>
+                            <td class="form-group" ng-class="vcanalIrrigatedArea"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" ng-pattern="/^\d+$/" class="form-control" required  ng-model="table.canalIrrigatedArea" />  </td>
+                            <td class="form-group" ng-class="vtubewellNumber"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.tubewellNumber" />  </td>
+                            <td class="form-group" ng-class="vtubewellIrrigatedArea"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.tubewellIrrigatedArea" />  </td>
+                            
+                            <td class="form-group" ng-class="vwellNumber"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.wellNumber" />  </td>
+                            <td class="form-group" ng-class="vwellIrrigatedArea"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.wellIrrigatedArea" />  </td>
+                            <td class="form-group" ng-class="vpondNumber"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.pondNumber" />  </td>
+                            <td class="form-group" ng-class="vpondIrrigatedArea"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.pondIrrigatedArea" />  </td>
+                            <td class="form-group" ng-class="votherSource"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.otherSource" />  </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <table class="table table-responsive  table-bordered text-center">
+                    <thead style="background-color:#85929E; color:white;">
+                        <tr>
+                            <td>    तहसील का नाम     </td>
+                            <td> समस्त स्त्रोतों से शुद्ध सिंचित क्षेत्र   </td>
+                            <td> सकल सिंचित क्षेत्र  </td>
+                            <td> एक बार से अधिक सिंचित क्षेत्र    </td>
+                            <td> कुल सिंचित क्षेत्र का बोये गए क्षेत्र से प्रतिशत </td>
+                        </tr>
+                       
+                    </thead>
+                    <tbody class="foot">
+                        <tr ng-repeat="table in formTable">
+                            <td>{{table.areaName}}</td>
+                            <td class="form-group" ng-class="vnetIrrigation"><input type="text" maxlength="4" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.netIrrigation" />  </td>
+                            <td class="form-group" ng-class="vgrossIrrigation"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.grossIrrigation" />  </td>
+                            <td class="form-group" ng-class="vmoreThanOneIrrigation"><input type="text" maxlength="6" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.moreThanOneIrrigation" />  </td>
+                            <td class="form-group" ng-class="virrigationPercentage"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.irrigationPercentage" />  </td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50" ng-model="index.note" />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50" ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+            </div>
+
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

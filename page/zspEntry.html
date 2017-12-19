@@ -1,0 +1,75 @@
+﻿<div ng-controller="entryCtrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+    <div class="container">
+        <div layout="row">
+            <div flex>
+                <md-input-container>
+                    <label>भाग</label>
+                    <md-select ng-model="part" placeholder="भाग" ng-change="getTableName()" class="md-no-underline">
+                        <md-option value="1">भाग - एक :- भौगोलिक एवं प्रशासनिक संरचना </md-option>
+                        <md-option value="2" ng-disabled="true">भाग - दो  :- क्षेत्रफल जनसंख्या तथा कार्यशील जनसंख्या </md-option>
+                        <md-option value="3">भाग - तीन   :- कृषि एवं सम्बद्ध सेवायें </md-option>
+                        <md-option value="4">भाग - चार  :- वन सांख्यिकी </md-option>
+                        <md-option value="5">भाग - पाँच  :- खनन एवं उत्खनन </md-option>
+                        <md-option value="6">भाग - छ:  :- उद्दोग  </md-option>
+                        <md-option value="7">भाग - सात  :- विद्युत  </md-option>
+                        <md-option value="8">भाग - आठ   :-श्रम एवं रोजगार  </md-option>
+                        <md-option value="9">भाग - नौ  :- सामाजिक सेवायें </md-option>
+                        <md-option value="10">भाग - दस  :- बैंकिंग  </md-option>
+                        <md-option value="11">भाग - ग्यारह  :- परिवहन एवं संचार  </md-option>
+                        <md-option value="12">भाग - बारह  :- न्यायिक तथा प्रशासनिक  </md-option>
+                        <md-option value="13">भाग - तेरह   :- स्थानीय निकाय </md-option>
+                        <md-option value="14">भाग - चौदह   :- वित्त   </md-option>
+                        <md-option value="15">भाग - पंद्रह  :- विविध  </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>  
+            <div flex>
+                    <md-input-container>
+                        <label></label>
+                    <select ng-model="year" ng-options="year as year.yearName for year in years track by year.id" ng-change="setYear()" class="form-control" >
+                        
+                    </select>
+                </md-input-container>
+            </div>
+        </div>
+        <br />
+
+        <!--<md-content>
+            <md-list flex>
+                <md-list-item class="md-3-line" ng-repeat="table in tables" ui-sref="{{'part'+part+'_'+table.id}}" ng-click="null">
+                    <img ng-src="img/avatar.jpg" class="md-avatar" />
+                    <div class="md-list-item-text" layout="column" >
+                        <h3>{{table.tableDescription_Hindi}} </h3>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+            </md-list>
+            </md-content>-->
+
+       
+            <div class="row" ng-repeat="rows in tables">
+                <div class="col-md-4" ng-repeat="item in rows">
+                    <md-card class="strip" style="color:white; height:18%;">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span  class="md-title">{{item.tableDescription_Hindi}}</span>
+                                <span class="md-subhead" style="color:white;">तालिका क्रमांक : {{item.TableNo}}</span>
+                            </md-card-title-text>
+                            <md-card-title-media>
+                                <div class="md-media-sm card-media"><img ng-src="img/logo.png" class="md-avatar" /></div>
+                            </md-card-title-media>
+                        </md-card-title>
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button ui-sref="{{item.url}}" ng-click="tableId=item.id; redirect(item);"><span>{{item.comments=='0' ? 'Entry' : 'Edit'}}</span></md-button>
+                            <md-button ui-sref="{{'view'+item.url}}">View</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+            </div>
+            
+       
+</div>
+</div>

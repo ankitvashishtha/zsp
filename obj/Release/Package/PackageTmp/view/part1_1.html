@@ -1,0 +1,100 @@
+﻿<div ng-controller="viewCtrl" ng-init="getViewForm('1.1');">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container" >
+        <md-whiteframe class="md-whiteframe-24dp"  layout layout-align="center center">
+            <h4>भाग 1 :- भौगोलिक एवं प्रशासनिक संरचना</h4>
+        </md-whiteframe>
+        <br />
+
+
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+
+        <div layout="row" layout-align="space-between center">
+            <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 1.1</div>
+            <div class="md-toolbar-tools" style="font-size:large">सामान्य जानकारी</div>
+            <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या</div>
+            <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+        </div>
+
+    </md-toolbar>
+    <br />
+    <div class="container">
+        <div layout="row" layout-align="space-between center">
+            <div>
+                <label>Note</label>
+                {{index.note}}
+
+            </div>
+            <div>
+                <label>Source</label>
+                {{index.source}}
+
+            </div>
+        </div>
+    </div>
+   
+    <div class="container-fluid">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div ng-cloak>
+                                <md-content class="md-padding">
+                                    <table class="table table-responsive table-striped">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td width="100">    तहसील का नाम     </td>
+                                                <td>  भौगोलिक क्षेत्रफल (वर्ग कि.मी.) </td>
+                                                <td> कुल ग्राम  </td>
+                                                <td>  आबाद ग्राम </td>
+                                                <td> ग्राम पंचायत  </td>
+                                                <td> जनपद पंचायत  </td>
+                                                <td>  नगर निगम </td>
+                                                <td>  नगर पालिका </td>
+                                                <td>  नगर पंचायत </td>
+                                                <td> अनुभाग </td>
+                                                <td>  राजस्व निरीक्षक सर्कल </td>
+                                                <td> पटवारी हल्के  </td>
+                                                <td> सामान्य आरक्षी थाना  </td>
+                                                <td> यातायात आरक्षी केंद्र  </td>
+                                                <td>  विद्धुतिकरण ग्राम </td>
+                                                <td> पेयजल सुविधा युक्त ग्राम  </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td>{{table.area}} </td>
+                                                <td>{{table.totalVillage}} </td>
+                                                <td>{{table.habitatVillage}} </td>
+                                                <td>{{table.gramPanchayat}} </td>
+                                                <td>{{table.block}} </td>
+                                                <td>{{table.nagarNigam}} </td>
+                                                <td>{{table.nagarPalika}} </td>
+                                                <td>{{table.nagarPanchayat}} </td>
+                                                <td>{{table.subDivision}} </td>
+                                                <td>{{table.revenueInspectorCircle}} </td>
+                                                <td>{{table.patwariHalke}} </td>
+                                                <td>{{table.samanyaArakshiThana}} </td>
+                                                <td>{{table.travellingReservationCentre}} </td>
+                                                <td>{{table.electrilizeedVillage}} </td>
+                                                <td>{{table.DWFVillage}} </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </md-content>
+                </div>
+
+            </div>
+        </div>
+      
+       
+    </div>
+
+</div>

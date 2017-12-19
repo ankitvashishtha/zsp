@@ -1,0 +1,105 @@
+﻿<div ng-controller="part15Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 15 :- विविध     </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 15.3</div>
+                <div class="md-toolbar-tools" style="font-size:medium">पंजीकृत घटनायें (जन्म-मृत्यु) </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('3')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                           
+                                            <tr>
+                                                <td rowspan="2">   तहसील का नाम     </td>
+                                                <td colspan="3" > जीवित जन्म   </td>
+                                                <td colspan="3" >  मृत्यु   </td>
+                                                <td colspan="3"> शिशु मृत्यु </td>
+                                                <td colspan="3"> मृत जन्म </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>  पुरुष   </td>
+                                                <td> स्त्री   </td>
+                                                <td>  योग  </td>
+                                                <td>  पुरुष   </td>
+                                                <td> स्त्री   </td>
+                                                <td>  योग  </td>
+                                                <td>  पुरुष   </td>
+                                                <td> स्त्री   </td>
+                                                <td>  योग  </td>
+                                                <td>  पुरुष   </td>
+                                                <td> स्त्री   </td>
+                                                <td>  योग  </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vLiveBirthMale"><input ng-model="table.LiveBirthMale"  type="text" maxlength="9" onkeypress="return onlyFloat(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vLiveBirthFemale"><input ng-model="table.LiveBirthFemale" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vLiveBirthTotal"><input ng-model="table.LiveBirthTotal" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vDeathMale"><input ng-model="table.DeathMale" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vDeathFemale"><input ng-model="table.DeathFemale" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vDeathTotal"><input ng-model="table.DeathTotal" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vInfantMortalityMale"><input ng-model="table.InfantMortalityMale" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vInfantMortalityFemale"><input ng-model="table.InfantMortalityFemale" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vInfantMortalityTotal"><input ng-model="table.InfantMortalityTotal" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vDeathBirthMale"><input ng-model="table.DeathBirthMale" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vDeathBirthFemale"><input ng-model="table.DeathBirthFemale" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vDeathBirthTotal"><input ng-model="table.DeathBirthTotal" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

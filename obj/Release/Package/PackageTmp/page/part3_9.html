@@ -1,0 +1,97 @@
+﻿<div ng-controller="part3Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 3 :- कृषि एवं सम्बद्ध सेवायें  </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 3.9</div>
+                <div class="md-toolbar-tools" style="font-size:medium">कृषि संबधी मशीने तथा यंत्र</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  :  संख्या</div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('9')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td rowspan="2" >    तहसील का नाम     </td>
+                                                <td colspan="3"> कृषि उपकरण (हल)     </td>
+                                                <td colspan="2"> गन्ना पेरने की चरखी   </td>
+                                                <td colspan="3"> पंप सिचाई हेतु     </td>
+                                                <td rowspan="2">    धनियाँ    </td>
+                                                <td rowspan="2">    पौध संरक्षण यंत्र    </td>
+                                            </tr>
+                                            <tr>
+                                                <td> लकड़ी </td>
+                                                <td> लोहा  </td>
+                                                <td> बैलगाड़ी   </td>
+                                                <td> शक्ति चालित </td>
+                                                <td> हाथ चालित   </td>
+                                                <td> तेल पम्प   </td>
+                                                <td> विद्युत पम्प  </td>
+                                                <td> ट्रेक्टर्स </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vtimber"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.timber" />  </td>
+                                                <td class="form-group" ng-class="viron"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.iron" />  </td>
+                                                <td class="form-group" ng-class="vbullcart"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.bullcart"/>  </td>
+                                                <td class="form-group" ng-class="vpowerDriven"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.powerDriven"/>  </td>
+                                                <td class="form-group" ng-class="vhandDriven"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.handDriven" />  </td>
+                                                <td class="form-group" ng-class="voilPump"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.oilPump"/>  </td>
+                                                <td class="form-group" ng-class="velectricPump"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.electricPump"/>  </td>
+                                                <td class="form-group" ng-class="vtractors"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.tractors" />  </td>
+                                                <td class="form-group" ng-class="vdhaniya"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.dhaniya" />  </td>
+                                                <td class="form-group" ng-class="vplantPreservationEquip"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.plantPreservationEquip" />  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+               
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

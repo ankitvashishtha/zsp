@@ -1,0 +1,85 @@
+﻿<div ng-controller="part9Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 9 :- श्रम एवं रोजगार    </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 9.10</div>
+                <div class="md-toolbar-tools" style="font-size:medium">परिवार कल्याण कार्यक्रम </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('10')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                           
+                                            <tr>
+                                                <td>    तहसील का नाम      </td>
+                                                <td>परिवार कल्याण केंद्र </td>
+                                                <td>प्रति केंद्र द्वारा सेवित जनसंख्या (सम्बंधित वर्ष की प्रक्षेपित जनसंख्या के आधार पर) </td>
+                                                <td>पुरुष नसबंदी </td>
+                                                <td>स्त्री नसबंदी </td>
+                                                <td>लप्रोस्कोपिक पद्धति </td>
+                                                <td>लूप निवेशन </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vFamilyWelfareCenter"><input ng-model="table.FamilyWelfareCenter"  type="text" maxlength="9" onkeypress="return onlyNum(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vPopuPerCenter"><input ng-model="table.PopuPerCenter" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vMaleSterilization"><input ng-model="table.MaleSterilization" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vFemaleSterilization"><input ng-model="table.FemaleSterilization"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vLaparoscopic"><input  ng-model="table.Laparoscopic"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vLoopInsertion"><input  ng-model="table.LoopInsertion"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

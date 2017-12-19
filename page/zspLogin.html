@@ -1,0 +1,68 @@
+﻿<br /><br /><br />
+   <br /><br /><br /><br /><br />
+
+<div layout-padding    ng-controller="loginController">
+ 
+        
+        <md-content layout="row" layout-align="space-around"  ng-cloak="ng-cloak" class="login-form">
+              
+            <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
+                <md-progress-linear md-mode="query" ng-show="isLoading" flex="flex" flex-gt-sm="100" flex-gt-md="33"></md-progress-linear>
+                <!--<md-progress-linear md-mode="query" ></md-progress-linear>-->
+                <md-toolbar>
+                    <div class="md-toolbar-tools">
+                        <h2><span>Login</span></h2>
+                    </div>
+                </md-toolbar>
+                <md-card-content>
+                    <form novalidate name="f1" ng-submit="Login()">
+                        <md-input-container class="md-block">
+                            <label>Login</label>
+                            <input type="text" name="email" ng-model="LoginData.Username"  required="" />
+                            <div ng-messages="LoginData.Username.$error" >
+                                <div ng-message="required" class="my-message">Please enter user name.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Password</label>
+                            <input type="password" name="password" ng-model="LoginData.Password"  required="" />
+                            <div ng-messages="LoginData.Password.$error" role="alert" multiple="">
+                                <div ng-message="required" class="my-message">Please enter your password.</div>
+                            </div>
+                        </md-input-container>
+                        <md-button type='submit' style="width:95%; height:50px;"  class="md-raised md-primary md-block" >&nbsp Login &nbsp</md-button>
+                    </form>
+                </md-card-content>
+            </md-card>
+        </md-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+                <!--<input type="text" placeholder="Username" ng-model="LoginData.Username" name="cUsername" ng-class="Submitted?'ng-dirty':''" required autofocus />
+            <span class="error" ng-show="(f1.cUsername.$dirty || Submitted) && f1.cUsername.$error.required">Username required</span>-->
+                <!--<input type="password" placeholder="password" ng-model="LoginData.Password" name="cPassword" ng-class="Submitted?'ng-dirty':''" required autofocus />
+            <span class="error" ng-show="(f1.cPassword.$dirty || Submitted) && f1.cPassword.$error.required">Password required</span>-->
+                <!--<p class="message">Not registered? <a >Create an account</a></p>-->
+        
+
+</div>

@@ -1,0 +1,92 @@
+﻿<div ng-controller="part9Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 9 :- श्रम एवं रोजगार    </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 9.7</div>
+                <div class="md-toolbar-tools" style="font-size:medium">चिकित्सा सुविधा समस्त पद्धति</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('7')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम      </td>
+                                                <td colspan="4"> चिकित्सालय एवं औषधालय  </td>
+                                                <td> उपलब्ध शैयाये  </td>
+                                                <td rowspan="2"> अन्य पद्धति </td>
+                                                <td rowspan="2"> रिमार्क  </td>
+                                                
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td> सामुदायिक स्वास्थ्य केंद्र </td>
+                                                <td> प्राथमिक स्वास्थ्य केंद्र </td>
+                                                <td>  उप स्वास्थ्य केंद्र  </td>
+                                                <td> आयुर्वेद यूनानी/होम्योपैथिक </td>
+                                                <td>  एलोपैथिक  </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vCommunityHealthCenter"><input ng-model="table.CommunityHealthCenter"  type="text" maxlength="9" onkeypress="return onlyNum(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vPrimaryHealthCenter"><input ng-model="table.PrimaryHealthCenter" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vSubHealthCenter"><input ng-model="table.SubHealthCenter" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vAyurvedYH"><input ng-model="table.AyurvedYH"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vAllopathy"><input  ng-model="table.Allopathy"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vOthers"><input  ng-model="table.Others"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vRemark"><input ng-model="table.Remark" type="text"  class="form-control" required />  </td>
+                                                   </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

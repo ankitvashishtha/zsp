@@ -1,0 +1,87 @@
+﻿<div ng-controller="part12Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 12 :- न्यायिक तथा प्रशासनिक     </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 12.2</div>
+                <div class="md-toolbar-tools" style="font-size:medium">विभिन्न प्रकरणों में चोरी गई तथा बरामद की गई सम्पत्ति </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('2')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                           
+                                            <tr>
+                                                <td >    तहसील का नाम      </td>
+                                                <td>  प्रकरणो की संख्या जिसमे संपत्ति चोरी गई    </td>
+                                                <td>  प्रकरण जिसमे संपत्ति प्रपट की गई   </td>
+                                                <td>  चोरी प्रकरणो से बरामद प्रकरणो का प्रतिशत </td>
+                                                <td> चोरी गई संपत्ति का मूल्य(लाख रु. मे)    </td>
+                                                <td> बरामद की गई संपत्ति का मूल्य (लाख रु. मे) </td>
+                                                <td> चोरी गई संपत्ति के मूल्य से बरामद की गई संपत्ति के मूल्य का प्रतिशत </td>
+                                                
+                                            </tr>
+                                            
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vTheftCase"><input ng-model="table.TheftCase"  type="text" maxlength="9" onkeypress="return onlyFloat(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vRecoverPropertyCase"><input ng-model="table.RecoverPropertyCase" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vRecoverPropertyPercent"><input ng-model="table.RecoverPropertyPercent" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vTheftPropertyAmount"><input ng-model="table.TheftPropertyAmount" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vRecoverPropertyAmount"><input ng-model="table.RecoverPropertyAmount" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vRecoverAmountPercent"><input ng-model="table.RecoverAmountPercent" type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

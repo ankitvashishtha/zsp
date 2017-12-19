@@ -1,0 +1,106 @@
+﻿<div ng-controller="part1Ctrl as tracking">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp"  layout layout-align="center center">
+            <h4>भाग 1 :- भौगोलिक एवं प्रशासनिक संरचना </h4>
+        </md-whiteframe>
+        <br />
+
+
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+
+        <div layout="row" layout-align="space-between center">
+            <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 1.1</div>
+            <div class="md-toolbar-tools" style="font-size:large">सामान्य जानकारी</div>
+            <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या</div>
+            <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+        </div>
+
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="save('1')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div ng-cloak>
+                                <md-content class="md-padding">
+                                    <table class="table table-responsive table-bordered">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td width="100">    तहसील का नाम     </td>
+                                                <td>  भौगोलिक क्षेत्रफल (वर्ग कि.मी.) </td>
+                                                <td> कुल ग्राम  </td>
+                                                <td>  आबाद ग्राम </td>
+                                                <td> ग्राम पंचायत  </td>
+                                                <td> जनपद पंचायत  </td>
+                                                <td>  नगर निगम </td>
+                                                <td>  नगर पालिका </td>
+                                                <td>  नगर पंचायत </td>
+                                                <td> अनुभाग </td>
+                                                <td>  राजस्व निरीक्षक सर्कल </td>
+                                                <td> पटवारी हल्के  </td>
+                                                <td> सामान्य आरक्षी थाना  </td>
+                                                <td> यातायात आरक्षी केंद्र  </td>
+                                                <td>  विद्धुतिकरण ग्राम </td>
+                                                <td> पेयजल सुविधा युक्त ग्राम  </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="varea"><input type="text" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.area" maxlength="8" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vtotalVillage"><input type="text" maxlength="4" onkeypress="return onlyNum(this)" ng-pattern="/^\d+$/" class="form-control" ng-model="table.totalVillage" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vhabitatVillage"><input type="text" maxlength="4" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.habitatVillage" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vgramPanchayat"><input type="text" maxlength="4" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.gramPanchayat" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vblock"><input type="text" maxlength="3" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.block" />  </td>
+                                                <td class="form-group" ng-class="vnagarNigam"><input type="text" maxlength="1" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.nagarNigam" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vnagarPalika"><input type="text" maxlength="1" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.nagarPalika" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vnagarPanchayat"><input type="text" maxlength="2" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.nagarPanchayat" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vsubDivision"><input type="text" maxlength="2" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.subDivision" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vrevenueInspectorCircle"><input type="text" maxlength="2" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.revenueInspectorCircle" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vpatwariHalke"><input type="text" maxlength="3" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.patwariHalke" ng-class="Submitted?'ng-dirty':''" ng-required="required" />  </td>
+                                                <td class="form-group" ng-class="vsamanyaArakshiThana"><input type="text" maxlength="3" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.samanyaArakshiThana" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vtravellingReservationCentre"><input type="text" maxlength="2" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.travellingReservationCentre" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="velectrilizeedVillage"><input type="text" maxlength="4" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.electrilizeedVillage" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                                <td class="form-group" ng-class="vDWFVillage"><input type="text" maxlength="4" onkeypress="return onlyNum(this)" class="form-control" ng-model="table.DWFVillage" ng-class="Submitted?'ng-dirty':''" />  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </md-content>
+                </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                       
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary ">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

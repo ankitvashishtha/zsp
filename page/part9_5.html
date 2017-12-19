@@ -1,0 +1,110 @@
+﻿<div ng-controller="part9Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 9 :- श्रम एवं रोजगार    </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 9.5</div>
+                <div class="md-toolbar-tools" style="font-size:medium">शैक्षणिक संस्थाओं में अनुसूचित जातियों एवं जनजातियों के विद्यार्थियों की संख्या शासकीय एवं अशासकीय  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('5')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम      </td>
+                                                <td colspan="2"> प्राथमिक विद्यालय   </td>
+                                                <td colspan="2"> माध्यमिक विद्यालय </td>
+                                                <td colspan="2"> हाई स्कूल </td>
+                                                <td colspan="2"> उच्चतर माध्यमिक शालाएं    </td>
+                                                <td colspan="2"> महाविद्यालय   </td>
+                                                <td colspan="2"> व्यावसायिक संस्थाये    </td>
+                                                <td colspan="2"> अन्य संस्थाये    </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>  अनु. जाति  </td>
+                                                <td> अनु. जनजाति  </td>
+                                                <td>  अनु. जाति  </td>
+                                                <td> अनु. जनजाति  </td>
+                                                <td>  अनु. जाति  </td>
+                                                <td> अनु. जनजाति  </td>
+                                                <td>  अनु. जाति  </td>
+                                                <td> अनु. जनजाति  </td>
+                                                <td>  अनु. जाति  </td>
+                                                <td> अनु. जनजाति  </td>
+                                                <td>  अनु. जाति  </td>
+                                                <td> अनु. जनजाति  </td>
+                                                <td>  अनु. जाति  </td>
+                                                <td> अनु. जनजाति  </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vPriSchoolSCStud"><input ng-model="table.PriSchoolSCStud"  type="text" maxlength="9" onkeypress="return onlyNum(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vPriSchoolSTStud"><input ng-model="table.PriSchoolSTStud" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vMiddleSchoolSCStud"><input ng-model="table.MiddleSchoolSCStud" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vMiddleSchoolSTStud"><input ng-model="table.MiddleSchoolSTStud"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vHighSchoolSCStud"><input  ng-model="table.HighSchoolSCStud"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vHighSchoolSTStud"><input  ng-model="table.HighSchoolSTStud"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vHigherSecSchoolSCStud"><input ng-model="table.HigherSecSchoolSCStud" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vHigherSecSchoolSTStud"><input ng-model="table.HigherSecSchoolSTStud" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vCollegeSCStud"><input ng-model="table.CollegeSCStud" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vCollegeSTStud"><input ng-model="table.CollegeSTStud" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vComInstiSCStud"><input ng-model="table.ComInstiSCStud" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vComInstiSTStud"><input ng-model="table.ComInstiSTStud" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vOtherInstiSCStud"><input ng-model="table.OtherInstiSCStud" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vOtherInstiSTStud"><input ng-model="table.OtherInstiSTStud" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

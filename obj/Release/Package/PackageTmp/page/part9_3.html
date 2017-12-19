@@ -1,0 +1,93 @@
+﻿<div ng-controller="part9Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 9 :- श्रम एवं रोजगार    </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 9.3</div>
+                <div class="md-toolbar-tools" style="font-size:medium">शैक्षणिक संस्थाओं की संख्या शासकीय एवं अशासकीय  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('3')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम      </td>
+                                                <td rowspan="2"> पूर्व प्राथमिक एवं प्राथमिक शाला    </td>
+                                                <td colspan="2"> ग्रामों से प्राथमिक शाला की दुरी  </td>
+                                                <td rowspan="2"> माध्यमिक विद्यालय     </td>
+                                                <td rowspan="2"> हाईस्कूल   </td>
+                                                <td rowspan="2"> उच्चतर माध्यमिक विद्यालय  </td>
+                                                <td rowspan="2"> महाविद्यालय  </td>
+                                                <td rowspan="2"> व्यवसायिक संस्थाए </td>
+                                                <td rowspan="2"> अन्य संस्थाए </td>
+                                            </tr>
+                                            <tr>
+                                                <td> ऐसे ग्रामों की संख्या जहाँ स्कूलों की दूरी 0 से 1 किमी तक है </td>
+                                                <td> ऐसे ग्रामों की संख्या जहाँ स्कूलों की दूरी 1 किमी से अधिक है</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vPrimarySchool"><input ng-model="table.PrimarySchool"  type="text" maxlength="9" onkeypress="return onlyFloat(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vNoVillageDistance0to1"><input ng-model="table.NoVillageDistance0to1" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vNoVillageDistanceMore1"><input ng-model="table.NoVillageDistanceMore1" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vMiddleSchool"><input ng-model="table.MiddleSchool"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vHighSchool"><input  ng-model="table.HighSchool"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vHigherSecSchool"><input  ng-model="table.HigherSecSchool"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vCollege"><input ng-model="table.College" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vCommercialInstitute"><input ng-model="table.CommercialInstitute" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vOtherInstitute"><input ng-model="table.OtherInstitute" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                               
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

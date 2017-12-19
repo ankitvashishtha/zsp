@@ -1,0 +1,95 @@
+﻿<div ng-controller="part6Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 6 :- उद्दोग    </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 6.1</div>
+                <div class="md-toolbar-tools" style="font-size:medium">उद्योग की संख्या एवं नियोजन </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('1')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम      </td>
+                                                <td colspan="3"> उद्दोग केंद्र के माध्यम से   </td>
+                                                <td colspan="3"> खादी गग्रामोद्योग के माध्यम से </td>
+                                                <td colspan="3"> कुल स्थापित उद्योग </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td> संख्या </td>
+                                                <td> नियोजित व्यक्ति</td>
+                                                <td> औसत नियोजन</td>
+                                                <td> संख्या </td>
+                                                <td> नियोजित व्यक्ति</td>
+                                                <td> औसत नियोजन</td>
+                                                <td> संख्या </td>
+                                                <td> नियोजित व्यक्ति</td>
+                                                <td> औसत नियोजन</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vByIndustryCenterNumber"><input ng-model="table.ByIndustryCenterNumber"  type="text" maxlength="9" onkeypress="return onlyFloat(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vByIndustryCenterEmployed"><input ng-model="table.ByIndustryCenterEmployed" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vByIndustryCenterAvgEmployment"><input ng-model="table.ByIndustryCenterAvgEmployment" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vKhadiVillageIndustryNumber"><input ng-model="table.KhadiVillageIndustryNumber"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vKhadiVillageIndustryEmployed"><input  ng-model="table.KhadiVillageIndustryEmployed"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vKhadiVillageIndustryAvgEmployment"><input  ng-model="table.KhadiVillageIndustryAvgEmployment"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vTotEstabishedNumber"><input ng-model="table.TotEstabishedNumber" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vTotEstabishedEmployed"><input ng-model="table.TotEstabishedEmployed" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vTotEstabishedAvgEmployment"><input ng-model="table.TotEstabishedAvgEmployment" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

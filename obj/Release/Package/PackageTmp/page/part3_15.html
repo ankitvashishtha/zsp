@@ -1,0 +1,103 @@
+﻿<div ng-controller="part3Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 3 :- कृषि एवं सम्बद्ध सेवायें  </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 3.15</div>
+                <div class="md-toolbar-tools" style="font-size:medium">प्रमुख फलों एवं सब्जियों का क्षेत्रफल</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  :  ??? </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('15')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम     </td>
+                                                <td colspan="5"> फल     </td>
+                                                <td colspan="8"> सब्जीयाँ  </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td> आम </td>
+                                                <td> केला  </td>
+                                                <td> पपीता </td>
+                                                <td> काजू   </td>
+                                                <td> लीची </td>
+                                                <td> फूलगोभी  </td>
+                                                <td> बंदगोभी </td>
+                                                <td> भिंडी   </td>
+                                                <td> कद्दू </td>
+                                                <td> टमाटर  </td>
+                                                <td> प्याज़ </td>
+                                                <td> आलू  </td>
+                                                <td> बैंगन </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vmango"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required   ng-model="table.mango" />  </td>
+                                                <td class="form-group" ng-class="vbanana"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.banana" />  </td>
+                                                <td class="form-group" ng-class="vpapaya"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.papaya"/>  </td>
+                                                <td class="form-group" ng-class="vkashew"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.kashew"/>  </td>
+                                                <td class="form-group" ng-class="vlitchi"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.litchi" />  </td>
+                                                <td class="form-group" ng-class="vcauliflower"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.cauliflower"/>  </td>
+                                                <td class="form-group" ng-class="vcabbage"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.cabbage"/>  </td>
+                                                <td class="form-group" ng-class="vladyfinger"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.ladyfinger" />  </td>
+                                                <td class="form-group" ng-class="vpumpkin"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.pumpkin" />  </td>
+                                                <td class="form-group" ng-class="vtommato"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.tommato" />  </td>
+                                                <td class="form-group" ng-class="vonion"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.onion" />  </td>
+                                                <td class="form-group" ng-class="vpotato"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.potato" />  </td>
+                                                <td class="form-group" ng-class="vbrinjal"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.brinjal" />  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+               
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

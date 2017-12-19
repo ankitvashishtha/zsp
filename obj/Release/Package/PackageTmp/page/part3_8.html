@@ -1,0 +1,108 @@
+﻿<div ng-controller="part3Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 3 :- कृषि एवं सम्बद्ध सेवायें  </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 3.8</div>
+                <div class="md-toolbar-tools" style="font-size:medium">उन्नत कृषि के अंतर्गत क्षेत्र</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  :क्षेत्रफल (हेक्टर में), मात्रा () </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('8')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td rowspan="3" >    तहसील का नाम     </td>
+                                                <td colspan="6"> रासायनिक खाद </td>
+                                                <td colspan="2" rowspan="2"> पौध संरक्षण  </td>
+                                                <td colspan="2" rowspan="2"> उन्नत बीज  </td>
+                                                <td colspan="2" rowspan="2"> बीजोपचार  </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"> नाइट्रोजेन     </td>
+                                                <td colspan="2"> फोस्फोरस  </td>
+                                                <td colspan="2"> पोटास   </td>
+                                            </tr>
+                                            <tr>
+                                                <td> क्षेत्रफल </td>
+                                                <td> मात्रा    </td>
+                                                <td> क्षेत्रफल </td>
+                                                <td> मात्रा    </td>
+                                                <td> क्षेत्रफल </td>
+                                                <td> मात्रा    </td>
+                                                <td> क्षेत्रफल </td>
+                                                <td> मात्रा    </td>
+                                                <td> क्षेत्रफल </td>
+                                                <td> मात्रा    </td>
+                                                <td> क्षेत्रफल </td>
+                                                <td> मात्रा    </td>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vnitrogenArea"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.nitrogenArea" />  </td>
+                                                <td class="form-group" ng-class="vnitrogenQuantityf"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" ng-pattern="/^\d+$/" class="form-control" required  ng-model="table.nitrogenQuantity" />  </td>
+                                                <td class="form-group" ng-class="vphosphorusArea"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.phosphorusArea"/>  </td>
+                                                <td class="form-group" ng-class="vphosphorusQuantity"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.phosphorusQuantity"/>  </td>
+                                                <td class="form-group" ng-class="vkpotasArea"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.kpotasArea" />  </td>
+                                                <td class="form-group" ng-class="vkpotasQuantity"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.kpotasQuantity"/>  </td>
+                                                <td class="form-group" ng-class="vplantPreservationArea"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.plantPreservationArea"/>  </td>
+                                                <td class="form-group" ng-class="vplantPreservationQuantity"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.plantPreservationQuantity" />  </td>
+                                                <td class="form-group" ng-class="vimprovedSeedArea"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.improvedSeedArea" />  </td>
+                                                <td class="form-group" ng-class="vimprovedSeedQuantity"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.improvedSeedQuantity" />  </td>
+                                                <td class="form-group" ng-class="vseedTreatmentArea"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.seedTreatmentArea" />  </td>
+                                                <td class="form-group" ng-class="vseedTreatmentQuantity"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.seedTreatmentQuantity" />  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+               
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

@@ -1,0 +1,128 @@
+﻿<div ng-controller="part10Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 10 :- बैंकिंग     </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 10.3</div>
+                <div class="md-toolbar-tools" style="font-size:medium">अनुसूचित वाणिज्यिकबैंक की अग्रिम राशि   </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : लाख रू. में   </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('3')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                           
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम      </td>
+                                                <td colspan="8"> अग्रिम राशी  </td>
+                                            </tr>
+                                            <tr>
+                                                <td> बैंकों के नाम  </td>
+                                                <td> प्राथमिक क्षेत्र </td>
+                                                <td> कृषि </td>
+                                                <td> लघु/माध्यम/कुटीर</td>
+                                                <td> कमजोर वर्ग </td>
+                                                <td> महिलाए </td>
+                                                <td> डी.आर.आई. (डिफ़ेरेंतियाल रेट ऑफ इंटरेस्ट) </td>
+                                                <td> योग </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr>
+                                                <td>{{formTable[formTable.length-1].areaName}}</td>
+                                                <td> अनु.वाणिज्यिक बैंक </td>
+                                                <td class="form-group" ng-class="vshedComPrimary"><input ng-model="formTable[formTable.length-1].shedComPrimary"  type="text" maxlength="9" onkeypress="return onlyFloat(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vshedComAgri"><input ng-model="formTable[formTable.length-1].shedComAgri" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vshedComIndustry"><input ng-model="formTable[formTable.length-1].shedComIndustry" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vshedComVulnerable"><input ng-model="formTable[formTable.length-1].shedComVulnerable"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vshedComWomen"><input ng-model="formTable[formTable.length-1].shedComWomen" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vshedComDRI"><input ng-model="formTable[formTable.length-1].shedComDRI" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vshedComTotal"><input ng-model="formTable[formTable.length-1].shedComTotal" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>{{formTable[formTable.length-1].areaName}}</td>
+                                                <td> विदेशी बैंक </td>
+                                                <td class="form-group" ng-class="vforeignPrimary"><input ng-model="formTable[formTable.length-1].foreignPrimary" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vforeignAgri"><input ng-model="formTable[formTable.length-1].foreignAgri" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vforeignIndustry"><input ng-model="formTable[formTable.length-1].foreignIndustry" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vforeignVulerable"><input ng-model="formTable[formTable.length-1].foreignVulerable" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vforeignWomen"><input ng-model="formTable[formTable.length-1].foreignWomen" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vforeignDRI"><input ng-model="formTable[formTable.length-1].foreignDRI" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vforeignTotal"><input ng-model="formTable[formTable.length-1].foreignTotal" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>{{formTable[formTable.length-1].areaName}}</td>
+                                                <td>  सहकारी बैंक </td>
+                                                <td class="form-group" ng-class="vcoopPrimary"><input ng-model="formTable[formTable.length-1].coopPrimary" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vcoopAgre"><input ng-model="formTable[formTable.length-1].coopAgre" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vcoopIndustry"><input ng-model="formTable[formTable.length-1].coopIndustry" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vcoopVulerable"><input ng-model="formTable[formTable.length-1].coopVulerable" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vcoopWomen"><input ng-model="formTable[formTable.length-1].coopWomen" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vcoopDRI"><input ng-model="formTable[formTable.length-1].coopDRI" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vcoopTotal"><input ng-model="formTable[formTable.length-1].coopTotal" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>{{formTable[formTable.length-1].areaName}}</td>
+                                                <td>   क्षेत्रीय ग्रामीण बैंक </td>
+                                                <td class="form-group" ng-class="vruralPrimary"><input ng-model="formTable[formTable.length-1].ruralPrimary" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vruralAgri"><input ng-model="formTable[formTable.length-1].ruralAgri" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vruralIndustry"><input ng-model="formTable[formTable.length-1].ruralIndustry" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vruralVulerable"><input ng-model="formTable[formTable.length-1].ruralVulerable" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vruralWomen"><input ng-model="formTable[formTable.length-1].ruralWomen" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vruralDRI"><input ng-model="formTable[formTable.length-1].ruralDRI" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vruralTotal"><input ng-model="formTable[formTable.length-1].ruralTotal" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

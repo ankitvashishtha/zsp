@@ -1,0 +1,92 @@
+﻿<div ng-controller="tableCtrl">
+    <br /><br /><br />
+    <h4 class="text-center">जिला सांख्यिकी समग्र, छत्तीसगढ़</h4>
+   <br />
+    <div class="container-fluid ">
+        <div class="row hidden-print">
+            <div class="col-lg-1" >
+                <span ng-show="areaId!=2"> <i   class="clickable fa fa-arrow-left fa-2x" ng-click="areaId = 2;areaType = 'जिला';getTableData();"></i></span>
+            </div>
+           
+            <div class="col-lg-2">
+                <select id="ddlYear" class="soflow-color" style="width:200px" title="Time Period" ng-options="year as year.year for year in years track by year.year" ng-model="ddlYear"></select>
+
+            </div>
+            <div class="col-lg-3">
+                
+                    <select  id="ddlSector" class="soflow-color" ng-model="ddlSector" ng-change="setSubSectors();" ng-options="sector as sector.sectorNameH+' ('+sector.sectorDiscription+')' for sector in sectors track by sector.id" title="Sector"></select>
+                
+            </div>
+            <div class="col-lg-2">
+                <select class="soflow-color" id="ddlSubSector" style="width:200px" ng-model="ddlSubSector" ng-change="setIndicators();"  ng-options="subSector as subSector.subSectorH for subSector in subSectors track by subSector.id" title="Sub Sector"></select>
+            </div>
+            
+            <!--<div class="col-lg-4">
+                <select id="ddlIndicator" class="form-control" title="Indicator" ng-options="indicator as indicator.indicatornameH for indicator in indicators track by indicator.id" ng-model="ddlIndicator"></select>
+            </div>-->
+            <div class="col-lg-3">
+                <!--<select class="form-control">
+                    <option ng-repeat="indicator in indicators" value="{{indicator.id}}">
+                        {{indicator.indicatorNameH}}
+                       <option>
+                </select>-->
+                <dl class="dropdown">
+                    <dt>
+                        <a>
+                            <span>Indicator</span>
+                        </a>
+                    </dt>
+                    <dd>
+                        <div class="mutliSelect">
+                            <ul>
+                                <li>
+                                    <input type="checkbox" ng-click="selectAll();" ng-model="selectAll"> Select All
+                                </li>
+                                <li ng-repeat="indicator in indicators">
+                                    <input type="checkbox" ng-change="getIusList({{indicator}});" value="{{indicator.id}}" ng-checked="selectAll" ng-model="aaa"> {{indicator.indicatorNameH}}
+                                </li>
+                            </ul>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-lg-1">
+            <span><i class="fa fa-file-pdf-o fa-2x text-danger clickable" ></i> </span>    
+                <span><i class="fa fa-file-excel-o fa-2x text-success clickable" ng-click="exportToXL();"></i> </span>  
+                <span><i class="fa fa-print fa-2x text-primary clickable" onclick="window.print();"></i> </span> 
+            </div>
+            </div>
+    </div>
+    <div id="myTable" class="container-fluid">
+        <table id="myTable" class="table table-hover table-bordered" >
+            <thead class=" alert-info">
+                <tr >
+                    <td >
+                    {{areaType}}
+
+                    </td>
+                    <td class="clickable" ng-repeat="ius in iusList">
+                      
+                        <a  ng-click="sortType = 'tableData[0].iuss[0].dataValue'; sortReverse = !sortReverse">
+                            {{iusListName[$index]}}
+                            <span ng-show="sortType == 'tableData[0].iuss[0].dataValue' && !sortReverse" class="fa fa-caret-down"></span>
+                            <span ng-show="sortType == 'tableData[0].iuss[0].dataValue' && sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="clickable" ng-repeat="data in tableData | orderBy:sortType:sortReverse | filter:searchFish" ng-click="setChildArea(this);">
+                    <td>
+                        {{data.areaName}}
+
+                    </td>
+                    <td ng-repeat="ius in data.iuss">
+                        {{ius.dataValue}}
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

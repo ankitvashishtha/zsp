@@ -1,0 +1,166 @@
+﻿<div style="background: rgba(0, 0, 0, 0) url(../img/background.jpg) repeat scroll 0 0;" ng-controller="dashboardCtrl">
+    <br /><br />
+    <br /><br /><br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1">
+                वर्ष : 
+            </div>
+            <div class="col-lg-2">
+               <select id="ddlYear" class="form-control" title="Time Period" ng-options="year as year.year for year in years track by year.year" ng-model="ddlYear"></select>
+                <!--<md-input-container>
+                    <label>वर्ष :</label>
+                    <md-select ng-model="ctrl.userState">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="year in years" ng-value="year.year">
+                            {{year.year}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>-->
+            </div>
+            <div class="col-lg-1">
+                भाग  :
+            </div>
+            <div class="col-lg-3">
+                <select class="form-control" id="ddlSector" ng-model="ddlSector" ng-change="setSubSectors();" ng-options="sector as sector.sectorNameH+' ('+sector.sectorDiscription+')' for sector in sectors track by sector.id" title="Sector"></select>
+            </div>
+            <div class="col-lg-1">
+                तालिका :
+            </div>
+            <div class="col-lg-2">
+                <select class="form-control" id="ddlSubSector" ng-model="ddlSubSector" ng-change="setIndicators();" ng-options="subSector as subSector.subSectorH for subSector in subSectors track by subSector.id" title="Sub Sector"></select>
+            </div>
+            <div class="col-lg-2">
+                <select id="ddlIndicator" class="form-control" title="Indicator" ng-change="getDashboardData();" ng-options="indicator as indicator.indicatorNameH for indicator in indicators track by indicator.id" ng-model="ddlIndicator"></select>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <br />
+        <div class="row">
+            <div class="col-lg-7">
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <span class="panel-title" style="font-size: large;">Mean : {{meanValue}}</span>
+                        
+                        <span class="pull-right clickable"><i class="fa fa-arrow-up"></i></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       
+                        <span class="panel-title" style="font-size: large;"> Median : {{medianValue}} </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="panel-title" style="font-size: large;"> Range : {{range}} </span>
+                        
+                    </div>
+                    <div class="panel-body">
+                        <div ng-hide="hideChart">
+
+                            <div id="chartSection" style="height: 390px; width:750px; overflow-y: hidden; overflow-x: auto;">
+                                <!-- //style="background-color: #FFFFFF"-->
+                                <canvas id="barChart" height="200" style=""></canvas>
+                            </div>
+
+                            <!--<div id="stats-chart2" style="height: 282px"></div>-->
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <input type="number" id="lowerLimit" class="form-control" ng-model="lowerLimit" width="10" ng-init="lowerLimit=0" placeholder="lower limit" title="Lower limit" ng-keyup="$event.keyCode == 13 ? setChartLimit() : null" />
+
+                                </div>
+                                <div class="col-lg-9">
+                                    Number of district in the range {{lowerLimit}} to <span id="higherLimit">{{higherLimit}} </span> is <span id="barCount" style="font-weight:600">{{noOfDist}}</span>
+
+                                </div>
+                            </div>
+                            <span id="chartText"></span>
+                        </div>
+                    </div>
+                </div>
+                      
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <span> <i class="clickable fa fa-arrow-left " ng-click="areaId = 2;getDashboardData();"></i></span>
+                                <span class="panel-title"  style="font-size: large;">{{areaNameAndValue}}</span>
+                                <span class="pull-right clickable"><i class="fa fa-arrow-up"></i></span>
+                            </div>
+                            <div class="panel-body">
+                               
+                                    <div id="map">
+                                    </div>
+                                    <div id="legendsection" class="lag " title="Click for change the legend">
+                                        <div class="flip">
+                                            <h4 class="text-center"><span>Legends</span></h4>
+                                            <div class="card">
+                                                <div id="facefront" class="face front hvr-buzz-out">
+                                                    <div>
+                                                        <span ng-if="natureId!='2'" id="lgdGreen" style="display: inline-block; background-color: #00A300; height: 20px; width: 20px;"></span>
+                                                        <span ng-if="natureId=='2'" style="display: inline-block; background-color: #EB3C00; height: 20px; width: 20px;"></span>
+                                                        <span>{{mid+stp}}</span>-   <span id="high1" disabled>{{high}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <span id="lgdYellow" style="display: inline-block; background-color: #FFC40D; height: 20px; width: 20px;"></span>
+                                                        <span>{{low2+stp}}</span>-  <span>{{mid}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <span ng-if="natureId!='2'" id="lgdRed" style="display: inline-block; background-color: #EB3C00; height: 20px; width: 20px;"></span>
+                                                        <span ng-if="natureId=='2'" style="display: inline-block; background-color: #00A300; height: 20px; width: 20px;"></span>
+                                                        <span>{{low}}</span>-   <span>{{low2}}</span>
+                                                    </div>
+                                                    <div>
+                                                        <span style="display: inline-block; background-color: #808080; height: 20px; width: 20px;"></span>
+                                                        Not Available
+                                                    </div>
+                                                </div>
+                                                <div id="legendBack" class="face back " title="Double click for close">
+                                                    <div class="row">
+                                                        <div class="col-lg-1">
+                                                            <span style="display: inline-block; background-color: green; height: 25px; width: 25px;"></span>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <input class="form-control" type="number" value="0" step="{{stp}}" style="width: 70px" disabled ng-model="mid+stp" />
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <input type="number" class="form-control" class="form-control" value="0" step="{{stp}}" style="width: 70px" ng-model="high" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-1">
+                                                            <span style="display: inline-block; background-color: #FFC40D; height: 25px; width: 25px;"></span>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <input type="number" class="form-control" ng-model="low2+stp" step="{{stp}}" style="width: 70px" disabled />
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <input type="number" class="form-control" step="{{stp}}" style="width: 70px" ng-model="mid" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-1">
+                                                            <span class="jscolor" style="display: inline-block; background-color: red; height: 25px; width: 25px;"></span>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <input type="number" class="form-control" step="{{stp}}" style="width: 70px" ng-model="low" />
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <input type="number" class="form-control" step="{{stp}}" style="width: 70px" ng-model="low2" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <a id="aaa" href="#" class="btn btn-primary" ng-click="refrash();" style="width: 150px;">Save changes</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                               
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+</div>

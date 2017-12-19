@@ -1,0 +1,89 @@
+﻿<div ng-controller="part1Ctrl as tracking">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp"  layout layout-align="center center">
+            <h4>भाग 1 :- भौगोलिक एवं प्रशासनिक संरचना </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+
+        <div layout="row" layout-align="space-between center">
+            <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 1.2</div>
+            <div class="md-toolbar-tools" style="font-size:large">भौगोलिक स्थिति</div>
+            <div class="md-toolbar-tools" style="font-size:medium">इकाई  : डिग्री</div>
+            <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+        </div>
+
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="save('1')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td width="100" rowspan="2">    तहसील का नाम     </td>
+                                                <td colspan="2">  अक्षांश  </td>
+                                                <td colspan="2"> देशांस </td>
+                                            </tr>
+                                            <tr>
+                                                <td>  उत्तर से  </td>
+                                                <td> उत्तर तक  </td>
+                                                <td> पूर्व से  </td>
+                                                <td> पूर्व तक   </td>
+                                               
+                                            </tr>
+                                           
+                                        </thead>
+                                        <tbody class="foot">
+
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group"><input type="text"  maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.bottomLatitude" required/>  </td>
+                                                <td class="form-group" ><input type="text" value="0" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.topLatitude" required />  </td>
+                                                <td class="form-group" ><input type="text" value="0" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.leftLongitude" required />  </td>
+                                                <td class="form-group"><input type="text" value="0" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="table.rightLongitude" required />  </td>
+                                               
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             
+
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                       
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+          
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

@@ -1,0 +1,90 @@
+﻿<div ng-controller="part3Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 3 :- कृषि एवं सम्बद्ध सेवायें  </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 3.4</div>
+                <div class="md-toolbar-tools" style="font-size:medium">खरीफ एवं रबी फसलों के अंतर्गत क्षेत्र</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : हेक्टर </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('4')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td rowspan="2" >    तहसील का नाम     </td>
+                                                <td colspan="3"> रबी     </td>
+                                                <td colspan="3"> खरीफ  </td>
+                                                <td rowspan="2"> महायोग    </td>
+                                            </tr>
+                                            <tr>
+                                                <td> खाद्य फसले </td>
+                                                <td> अखाद्य फसले    </td>
+                                                <td> योग   </td>
+                                                <td> खाद्य फसले </td>
+                                                <td> अखाद्य फसले    </td>
+                                                <td> योग   </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vedibleCrop_Kharif"><input type="text" maxlength="7" onkeypress="return onlyFloat(this)" class="form-control" required  ng-model="table.edibleCrop_Kharif" />  </td>
+                                                <td class="form-group" ng-class="vinedibleCrop_Kharif"><input type="text" maxlength="7" onkeypress="return onlyNum(this)"  class="form-control" required  ng-model="table.inedibleCrop_Kharif" />  </td>
+                                                <td class="form-group" ng-class="vtotalCrop_Kharif"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalCrop_Kharif"/>  </td>
+                                                <td class="form-group" ng-class="vedibleCrop_Rabi"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.edibleCrop_Rabi"/>  </td>
+                                                <td class="form-group" ng-class="vinedibleCrop_Rabi"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.inedibleCrop_Rabi" />  </td>
+                                                <td class="form-group" ng-class="vtotalCrop_Rabi"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.totalCrop_Rabi"/>  </td>
+                                                <td class="form-group" ng-class="vgrandTotal"><input type="text" maxlength="7" onkeypress="return onlyNum(this)" class="form-control" required  ng-model="table.grandTotal"/>  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+               
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

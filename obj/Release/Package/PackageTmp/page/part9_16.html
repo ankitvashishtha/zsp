@@ -1,0 +1,102 @@
+﻿<div ng-controller="part9Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 9 :- श्रम एवं रोजगार    </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 9.16</div>
+                <div class="md-toolbar-tools" style="font-size:medium">संक्रामक बीमारियों पर नियंत्रण</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('16')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम      </td>
+                                                <td colspan="4"> पक्की सड़क  </td>
+                                                <td colspan="4"> कच्ची सड़क  </td>
+                                                <td rowspan="2"> महायोग   </td>
+                                                <td colspan="2"> सड़क से जुड़े आबाद ग्राम    </td>
+                                                <td rowspan="2"> वर्षा ऋतू में पहुँच विहीन ग्राम    </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>प्रधानमंत्री सड़क </td>
+                                                <td>लोक निर्माण विभाग</td>
+                                                <td>स्थानीय निकाय</td>
+                                                <td>योग</td>
+                                                <td>लोक निर्माण विभाग</td>
+                                                <td>स्थानीय निकाय </td>
+                                                <td>वन विभाग </td>
+                                                <td>योग</td>
+                                                <td>500 या कम आबादी </td>
+                                                <td>500 से अधिक आबादी </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vPMPavedRoad"><input ng-model="table.PMPavedRoad"  type="text" maxlength="9" onkeypress="return onlyNum(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vPWDPavedRoad"><input ng-model="table.PWDPavedRoad" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vLBPavedRoad"><input ng-model="table.LBPavedRoad" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vTotalPavedRoad"><input ng-model="table.TotalPavedRoad"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vPWDRawRoad"><input  ng-model="table.PWDRawRoad"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vLBRawRoad"><input  ng-model="table.LBRawRoad"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vForestRawRoad"><input ng-model="table.ForestRawRoad" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vTotalRawRoad"><input ng-model="table.TotalRawRoad" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vTotalRoad"><input ng-model="table.TotalRoad" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vHabitatVilLess500"><input ng-model="table.HabitatVilLess500" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vHabitatVilMore500"><input ng-model="table.HabitatVilMore500" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vCutOffVilInRain"><input ng-model="table.CutOffVilInRain" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

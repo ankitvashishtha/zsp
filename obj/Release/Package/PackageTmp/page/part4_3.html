@@ -1,0 +1,108 @@
+﻿<div ng-controller="part4Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 4 :- वन सांख्यिकी   </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 4.3</div>
+                <div class="md-toolbar-tools" style="font-size:medium">वनमंडल के गौण वनोपज</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : ---  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('3')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td rowspan="2">    वन मंडल का नाम     </td>
+                                                <td colspan="2"> व्यापारिक बांस   </td>
+                                                <td colspan="2"> ओद्योगिक बांस  </td>
+                                                <td colspan="2"> तेंदुपत्ता   </td>
+                                                <td colspan="2"> महुआ फूल   </td>
+                                                <td colspan="2"> गोंद   </td>
+                                                <td colspan="2"> लाख    </td>
+                                                <td colspan="2"> अन्य    </td>
+                                            </tr>
+                                            <tr>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य </td>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य </td>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य </td>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य </td>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य </td>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य </td>
+                                                <td> उत्पादन </td>
+                                                <td> मूल्य </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vcomBambuProduction"><input ng-model="table.comBambuProduction"  type="text" maxlength="9" onkeypress="return onlyFloat(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vcomBambuPrice"><input ng-model="table.comBambuPrice" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vindBambuProduction"><input ng-model="table.indBambuProduction" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vindBambuPrice"><input ng-model="table.indBambuPrice"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vtendupattaProduction"><input  ng-model="table.tendupattaProduction"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vtendupattaPrice"><input  ng-model="table.tendupattaPrice"  type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vmahuaProduction"><input ng-model="table.mahuaProduction" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vmahuaPrice"><input ng-model="table.mahuaPrice" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vgondProduction"><input ng-model="table.gondProduction" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vgondPrice"><input ng-model="table.gondPrice" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vlakhProduction"><input ng-model="table.lakhProduction" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vlakhPrice"><input ng-model="table.lakhPrice" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="votherProduction"><input ng-model="table.otherProduction" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="votherPrice"><input ng-model="table.otherPrice" type="text" maxlength="9" onkeypress="return onlyFloat(this)" class="form-control" required />  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

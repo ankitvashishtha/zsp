@@ -1,0 +1,250 @@
+﻿<div ng-controller="part6Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 6 :- उद्दोग    </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 6.2</div>
+                <div class="md-toolbar-tools" style="font-size:medium">पंजीकृत कारखाने एवं नियोजित श्रमिक </div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : संख्या  </div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="saveTable('2')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                           
+                                            <tr>
+                                                <td rowspan="2">    तहसील का नाम      </td>
+                                                <td colspan="2"> खाद्य सामग्री का निर्माण    </td>
+                                                <td colspan="2"> तम्बाकू उत्पादन  </td>
+                                                <td colspan="2"> सूती रेशमी तथा कृत्रिम धागों का उत्पादन  </td>
+                                                <td colspan="2"> सूती वस्त्र उद्योग   </td>
+                                                <td colspan="2"> चमड़े के सामान का निर्माण   </td>
+                                                <td colspan="2"> लकड़ी एवं लकड़ी के उत्पाद का निर्माण  </td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td> कारखानों की संख्या </td>
+                                                <td> औसत दैनिक नियोजन</td>
+                                                <td> कारखानों की संख्या </td>
+                                                <td> औसत दैनिक नियोजन</td>
+                                                <td> कारखानों की संख्या </td>
+                                                <td> औसत दैनिक नियोजन</td>
+                                                <td> कारखानों की संख्या </td>
+                                                <td> औसत दैनिक नियोजन</td>
+                                                <td> कारखानों की संख्या </td>
+                                                <td> औसत दैनिक नियोजन</td>
+                                                <td> कारखानों की संख्या </td>
+                                                <td> औसत दैनिक नियोजन</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="foot">
+                                            <tr ng-repeat="table in formTable">
+                                                <td>{{table.areaName}}</td>
+                                                <td class="form-group" ng-class="vFoodIngredientsFactory"><input ng-model="table.FoodIngredientsFactory"  type="text" maxlength="9" onkeypress="return onlyNum(this)"  class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vFoodIngredientsAvgEmp"><input ng-model="table.FoodIngredientsAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vTobaccoProductionFactory"><input ng-model="table.TobaccoProductionFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vTobaccoProductionAvgEmp"><input ng-model="table.TobaccoProductionAvgEmp"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required  />  </td>
+                                                <td class="form-group" ng-class="vCottonThreadsFactory"><input  ng-model="table.CottonThreadsFactory"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vCottonThreadsAvgEmp"><input  ng-model="table.CottonThreadsAvgEmp"  type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required/>  </td>
+                                                <td class="form-group" ng-class="vCottonClothsFactory"><input ng-model="table.CottonClothsFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vCottonClothsAvgEmp"><input ng-model="table.CottonClothsAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vLeatherFactory"><input ng-model="table.LeatherFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vLeatherAvgEmp"><input ng-model="table.LeatherAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vWoodenFactory"><input ng-model="table.WoodenFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                <td class="form-group" ng-class="vWoodenAvgEmp"><input ng-model="table.WoodenAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+                <table class="table table-responsive  table-bordered text-center">
+                    <thead style="background-color:#85929E; color:white;">
+
+                        <tr>
+                            <td rowspan="2">    तहसील का नाम      </td>
+                            <td colspan="2"> कागज एवं कागज के सामान निर्माण     </td>
+                            <td colspan="2"> मुद्रण एवं प्रकाशन   </td>
+                            <td colspan="2"> कोयला खनन   </td>
+                            <td colspan="2"> रसायनों आदि का निर्माण    </td>
+                            <td colspan="2"> रबर, प्लास्टिक उत्पाद का निर्माण  </td>
+                            <td colspan="2"> मिट्टी के वस्तु निर्माण  </td>
+
+                        </tr>
+                        <tr>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                        </tr>
+                    </thead>
+                    <tbody class="foot">
+                        <tr ng-repeat="table in formTable">
+                            <td>{{table.areaName}}</td>
+                            <td class="form-group" ng-class="vPaperFactory"><input ng-model="table.PaperFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vPaperAvgEmp"><input ng-model="table.PaperAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vPrintingPublishingFactory"><input ng-model="table.PrintingPublishingFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vPrintingPublishingAvgEmp"><input ng-model="table.PrintingPublishingAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vCoalMiningFactory"><input ng-model="table.CoalMiningFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vCoalMiningAvgEmp"><input ng-model="table.CoalMiningAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vChemicalFactory"><input ng-model="table.ChemicalFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vChemicalAvgEmp"><input ng-model="table.ChemicalAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vRubberFactory"><input ng-model="table.RubberFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vRubberAvgEmp"><input ng-model="table.RubberAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vSoilFactory"><input ng-model="table.SoilFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vSoilAvgEmp"><input ng-model="table.SoilAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <table class="table table-responsive  table-bordered text-center">
+                    <thead style="background-color:#85929E; color:white;">
+
+                        <tr>
+                            <td rowspan="2">    तहसील का नाम      </td>
+                            <td colspan="2"> सीमेंट निर्माण   </td>
+                            <td colspan="2"> लोहा निर्माण   </td>
+                            <td colspan="2"> लोहे के सामान निर्माण    </td>
+                            <td colspan="2"> लोहे की मशीनरी निर्माण   </td>
+                            <td colspan="2"> कंप्यूटर निर्माण  </td>
+                            <td colspan="2"> बिजली के सामान निर्माण  </td>
+
+                        </tr>
+                        <tr>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                        </tr>
+                    </thead>
+                    <tbody class="foot">
+                        <tr ng-repeat="table in formTable">
+                            <td>{{table.areaName}}</td>
+                            <td class="form-group" ng-class="vCementFactory"><input ng-model="table.CementFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vCementAvgEmp"><input ng-model="table.CementAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vIronFactory"><input ng-model="table.IronFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vIronAvgEmp"><input ng-model="table.IronAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vIronGoodsFactory"><input ng-model="table.IronGoodsFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vIronGoodsAvgEmp"><input ng-model="table.IronGoodsAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vIronMachinaryFactory"><input ng-model="table.IronMachinaryFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vIronMachinaryAvgEmp"><input ng-model="table.IronMachinaryAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vComputerFactory"><input ng-model="table.ComputerFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vComputerAvgEmp"><input ng-model="table.ComputerAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vElectricalGoodsFactory"><input ng-model="table.ElectricalGoodsFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vElectricalGoodsAvgEmp"><input ng-model="table.ElectricalGoodsAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <table class="table table-responsive  table-bordered text-center">
+                    <thead style="background-color:#85929E; color:white;">
+
+                        <tr>
+                            <td rowspan="2">    तहसील का नाम      </td>
+                            <td colspan="2"> रेडियो टेलीविजन एवं संचार के साधन    </td>
+                            <td colspan="2"> दवाई निर्माण   </td>
+                            <td colspan="2"> मोटर आदि का निर्माण </td>
+                            <td colspan="2"> घड़ी निर्माण  </td>
+                            <td colspan="2"> ज्वेलरी निर्माण </td>
+                            <td colspan="2"> अन्य उद्योग  </td>
+                            <td colspan="2"> कुल उद्योग  </td>
+
+                        </tr>
+                        <tr>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                            <td> कारखानों की संख्या </td>
+                            <td> औसत दैनिक नियोजन</td>
+                        </tr>
+                    </thead>
+                    <tbody class="foot">
+                        <tr ng-repeat="table in formTable">
+                            <td>{{table.areaName}}</td>
+                            <td class="form-group" ng-class="vRadioFactory"><input ng-model="table.RadioFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vRadioAvgEmp"><input ng-model="table.RadioAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vMedicineFactory"><input ng-model="table.MedicineFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vMedicineAvgEmp"><input ng-model="table.MedicineAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vMotorsFactory"><input ng-model="table.MotorsFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vMotorsAvgEmp"><input ng-model="table.MotorsAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vWatchesFactory"><input ng-model="table.WatchesFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vWatchesAvgEmp"><input ng-model="table.WatchesAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vJwelleryFactory"><input ng-model="table.JwelleryFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vJwelleryAvgEmp"><input ng-model="table.JwelleryAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vOtherFactory"><input ng-model="table.OtherFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vOtherAvgEmp"><input ng-model="table.OtherAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vTotalFactory"><input ng-model="table.TotalFactory" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                            <td class="form-group" ng-class="vTotalAvgEmp"><input ng-model="table.TotalAvgEmp" type="text" maxlength="9" onkeypress="return onlyNum(this)" class="form-control" required />  </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>

@@ -1,0 +1,149 @@
+﻿<div ng-controller="part1Ctrl">
+    <div class="hidden-print" style="padding-bottom:90px;"></div>
+    <md-progress-linear md-mode="indeterminate" value="30" ng-show="isLoading"></md-progress-linear>
+    <br />
+
+    <div class="container">
+        <md-whiteframe class="md-whiteframe-24dp" layout layout-align="center center">
+            <h4>भाग 1 :- भौगोलिक एवं प्रशासनिक संरचना </h4>
+        </md-whiteframe>
+        <br />
+    </div>
+    <md-toolbar md-scroll-shrink style="background-color:#8b9dc3">
+       
+            <div layout="row" layout-align="space-between center">
+                <div class="md-toolbar-tools" style="font-size:medium">तालिका क्रमांक : 1.4</div>
+                <div class="md-toolbar-tools" style="font-size:medium">तापमान</div>
+                <div class="md-toolbar-tools" style="font-size:medium">इकाई  : सेल्सियस</div>
+                <div class="md-toolbar-tools" style="font-size:medium">वर्ष : {{yearName}}</div>
+            </div>
+           
+    </md-toolbar>
+    <br />
+    <form class="container-fluid" novalidate name="f1" ng-submit="save('4')">
+
+        <!--<div layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
+        </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                                    <table class="table table-responsive  table-bordered text-center">
+                                        <thead style="background-color:#85929E; color:white;">
+                                            <tr>
+                                                <td rowspan="2" >    तहसील का नाम     </td>
+                                                <td colspan="2"> जनवरी   </td>
+                                                <td colspan="2">फ़रवरी </td>
+                                                <td colspan="2">  मार्च  </td>
+                                                <td colspan="2"> अप्रैल </td>
+                                                <td colspan="2"> मई   </td>
+                                                <td colspan="2"> जून</td>
+                                            </tr>
+                                            <tr>
+                                                <td> न्यूनतम   </td>
+                                                <td> अधिकतम     </td>
+                                                <td> न्यूनतम   </td>
+                                                <td> अधिकतम     </td>
+                                                <td> न्यूनतम   </td>
+                                                <td> अधिकतम     </td>
+                                                <td> न्यूनतम   </td>
+                                                <td> अधिकतम     </td>
+                                                <td> न्यूनतम   </td>
+                                                <td> अधिकतम     </td>
+                                                <td> न्यूनतम   </td>
+                                                <td> अधिकतम     </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody >
+                                            <tr >
+                                                <td>{{formTable[formTable.length-1].areaName}}</td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minJan" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxJan" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minFeb" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxFeb" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minMar" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxMar" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minApr" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxApr" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minMay" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxMay" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minJun" required />  </td>
+                                                <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxJun" required />  </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                             <br />
+                <table class="table table-responsive  table-bordered text-center">
+                    <thead style="background-color:#85929E; color:white;">
+                        <tr>
+                            <td rowspan="2">    तहसील का नाम     </td>
+                            <td colspan="2">  जुलाई   </td>
+                            <td colspan="2">  अगस्त</td>
+                            <td colspan="2">  सितंबर   </td>
+                            <td colspan="2"> अक्टूबर</td>
+                            <td colspan="2"> नवंबर   </td>
+                            <td colspan="2">  दिसंबर</td>
+
+                        </tr>
+                        <tr>
+                            <td> न्यूनतम   </td>
+                            <td> अधिकतम     </td>
+                            <td> न्यूनतम   </td>
+                            <td> अधिकतम     </td>
+                            <td> न्यूनतम   </td>
+                            <td> अधिकतम     </td>
+                            <td> न्यूनतम   </td>
+                            <td> अधिकतम     </td>
+                            <td> न्यूनतम   </td>
+                            <td> अधिकतम     </td>
+                            <td> न्यूनतम   </td>
+                            <td> अधिकतम     </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{formTable[formTable.length-1].areaName}}</td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minJul" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxJul" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minAug" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxAug" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minSep" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxSep" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minOct" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxOct" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minNov" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxNov" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].minDec" required />  </td>
+                            <td class="form-group"><input type="text" maxlength="5" onkeypress="return onlyFloat(this)" class="form-control" ng-model="formTable[formTable.length-1].maxDec" required />  </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="container">
+            <div layout="row" layout-align="space-between center">
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Note</label>
+                        <textarea rows="4" cols="50"  ng-model="index.note"  />
+                    </md-input-container>
+                </div>
+                <div><md-button type='submit' class="md-raised md-primary">Save</md-button></div>
+                <div >
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Source</label>
+                        <textarea rows="4" cols="50"  ng-model="index.source" required />
+                        <div ng-messages="index.source.$error">
+                            <div ng-message="required" class="my-message">Please enter source name.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+               
+            </div>
+            
+        </div>
+        <br />
+        <br />
+    </form>
+
+</div>
